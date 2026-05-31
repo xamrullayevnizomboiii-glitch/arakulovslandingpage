@@ -866,25 +866,12 @@
                 min-height: auto;
             }
             .hero-content {
-                display: grid;
-                grid-template-columns: 1.3fr 1fr;
-                grid-template-areas: 
-                    "title image"
-                    "desc image"
-                    "buttons stats";
-                gap: 10px;
-                align-items: start;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                align-items: flex-start;
             }
-            .hero-content > div:first-child {
-                display: contents;
-            }
-            .hero-content h1 { grid-area: title; font-size: 1.35rem; margin-bottom: 5px; text-align: left; }
-            .hero-content .hero-desc { grid-area: desc; font-size: 0.8rem; margin-bottom: 15px; text-align: left; }
-            .btn-group { grid-area: buttons; display: flex; flex-direction: column; gap: 8px; margin-bottom: 0; }
-            .btn-group .btn { width: 100%; text-align: center; padding: 8px 16px; font-size: 0.75rem; }
-            
             .hero-img-wrapper {
-                grid-area: image;
+                order: 1;
                 margin-top: 0;
             }
             .hero-img {
@@ -900,15 +887,39 @@
                 font-size: 0.7rem;
                 padding: 6px 12px;
             }
+            .hero-text {
+                text-align: left;
+            }
+            .hero-text h1 {
+                font-size: 1.3rem;
+                margin-bottom: 0.75rem;
+            }
+            .hero-text .desc {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+            .hero-buttons {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+                flex-direction: column;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                display: block;
+                text-align: center;
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
             .mini-stats {
-                grid-area: stats;
                 flex-direction: row;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: center;
                 gap: 5px;
                 flex-wrap: nowrap;
                 width: 100%;
-                margin-top: 0;
+                margin-top: 10px;
             }
             .mini-stats > span {
                 font-size: 0.65rem;
@@ -1184,11 +1195,14 @@
 
             /* --- MODAL --- */
             .modal-box {
-                max-width: 95% !important;
+                width: 90vw !important;
+                max-width: 400px !important;
                 max-height: 80vh !important;
                 overflow-y: auto !important;
                 padding: 20px 15px !important;
                 border-radius: 16px !important;
+                margin: 0 auto !important;
+                box-sizing: border-box !important;
             }
             .modal-box h3 {
                 font-size: 1.25rem !important;
@@ -1208,6 +1222,8 @@
             .modal-box input, .modal-box select, .modal-box button {
                 padding: 10px 12px !important;
                 font-size: 0.9rem !important;
+                box-sizing: border-box !important;
+                width: 100% !important;
             }
 
             /* --- TOUCH ACTIVE ANIMATIONS --- */
