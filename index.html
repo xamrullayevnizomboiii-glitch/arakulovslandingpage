@@ -64,7 +64,6 @@
         .stat-num, .stat-text, .course-price, .trophy-num, .trophy-text,
         .schedule-item, .contact-card p, .footer-logo, .theme-btn, .lang-btn,
         [style*="font-weight: 600"], [style*="font-weight: 700"], [style*="font-weight: 800"] {
-            font-family: "Times New Roman", Times, serif !important;
             font-style: normal !important;
         }
 
@@ -284,8 +283,8 @@
             position: absolute;
             width: 350px; height: 350px;
             background: var(--accent);
-            filter: blur(100px);
-            opacity: 0.4;
+            filter: blur(120px);
+            opacity: 0.15;
             z-index: -1;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
@@ -880,6 +879,8 @@
             }
             .hero-circle {
                 width: 150px; height: 150px;
+                opacity: 0.15;
+                filter: blur(40px);
             }
             .floating-badge {
                 bottom: 10px; right: -5px;
@@ -912,14 +913,23 @@
                 font-size: 0.75rem;
             }
             .mini-stats {
-                flex-direction: column;
-                align-items: flex-start;
-                font-size: 0;
-                gap: 0.5rem;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+                flex-wrap: nowrap;
+                width: 100%;
+                margin-top: 10px;
             }
             .mini-stats > span {
-                font-size: 0.72rem;
+                font-size: 0.65rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+                text-align: center;
             }
+            .mini-stats i { font-size: 1rem; }
 
             /* --- STATS SECTION --- */
             .stats-grid {
@@ -937,15 +947,31 @@
 
             /* --- ABOUT SECTION --- */
             .about-grid {
-                grid-template-columns: 1fr;
-                gap: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .about-grid > div:first-child {
+                flex-shrink: 0;
+            }
+            .about-grid > div:last-child {
+                flex: 1;
             }
             .about-img {
-                max-width: 180px;
-                margin: 0 auto;
-                display: block;
+                width: 120px !important;
+                height: 120px !important;
+                border-radius: 50% !important;
+                object-fit: cover !important;
+                margin: 0 !important;
+                border: 3px solid var(--accent) !important;
             }
-            .about-desc { font-size: 0.9rem; margin-top: 1rem; }
+            .about-grid h2 {
+                font-size: 1.4rem !important;
+                margin-bottom: 0.5rem !important;
+                line-height: 1.2;
+            }
+            .about-desc { font-size: 0.85rem; margin-top: 0; line-height: 1.4; }
             .about-list { display: none; }
             .certs-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -958,11 +984,33 @@
 
             /* --- COURSES SECTION --- */
             .courses-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+                display: flex;
+                flex-wrap: nowrap;
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+                scroll-behavior: smooth;
+                gap: 0;
             }
             .course-card {
+                min-width: 100%;
+                flex-shrink: 0;
                 padding: 1.5rem;
+            }
+            .carousel-controls {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 15px;
+            }
+            .carousel-btn {
+                background: var(--card-bg);
+                border: 2px solid var(--accent);
+                color: var(--accent);
+                width: 40px; height: 40px;
+                border-radius: 50%;
+                display: flex; justify-content: center; align-items: center;
+                font-size: 1.2rem;
             }
             .course-card h3 { font-size: 1.2rem !important; }
             .course-price { font-size: 1.4rem; }
@@ -1024,10 +1072,30 @@
 
             /* --- RESULTS SECTION --- */
             .results-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.75rem;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                height: 250px;
+                align-items: center;
             }
-            .trophy-card { padding: 1.2rem 0.8rem; }
+            .trophy-card {
+                position: absolute;
+                width: 90%;
+                transition: all 0.4s ease;
+                cursor: pointer;
+                padding: 1.2rem 0.8rem;
+            }
+            .trophy-card:nth-child(1) { top: 0; transform: scale(0.9) translateY(0); z-index: 1; opacity: 0.6; }
+            .trophy-card:nth-child(2) { top: 20px; transform: scale(0.95) translateY(0); z-index: 2; opacity: 0.8; }
+            .trophy-card:nth-child(3) { top: 40px; transform: scale(1) translateY(0); z-index: 3; opacity: 1; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+            
+            .trophy-card.stack-active {
+                top: 40px !important;
+                transform: scale(1) translateY(0) !important;
+                z-index: 10 !important;
+                opacity: 1 !important;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+            }
             .trophy-icon { font-size: 2.5rem; }
             .trophy-num { font-size: 1.8rem; }
             .trophy-text { font-size: 0.8rem; height: auto; }
@@ -1056,16 +1124,23 @@
 
             /* --- CONTACT SECTION --- */
             .contact-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.4rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 10px;
             }
             .contact-card {
-                padding: 0.75rem 0.5rem;
+                flex: 1;
+                padding: 1rem 0.2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                aspect-ratio: 1;
                 border-radius: 10px;
             }
             .contact-card i { font-size: 1.5rem !important; }
-            .contact-card h4 { font-size: 0.75rem; }
-            .contact-card p { font-size: 0.65rem; }
+            .contact-card h4 { font-size: 0.75rem; margin: 4px 0; }
+            .contact-card p { font-size: 0.65rem; word-break: break-all; }
 
             /* --- FOOTER --- */
             .footer-content {
@@ -1085,6 +1160,18 @@
                 font-size: 0.85rem;
             }
 
+            /* --- MODAL --- */
+            .modal-box {
+                max-width: 90% !important;
+                max-height: 85vh !important;
+                overflow-y: auto !important;
+                padding: 20px !important;
+            }
+            .modal-box input, .modal-box select, .modal-box button {
+                padding: 10px 12px !important;
+                font-size: 14px !important;
+            }
+
             /* --- TOUCH ACTIVE ANIMATIONS --- */
             .stat-card.touch-active,
             .mock-step.touch-active,
@@ -1093,13 +1180,11 @@
             .course-grammar.touch-active,
             .course-cefr.touch-active,
             .schedule-card.touch-active,
-            .mock-rules.touch-active {
-                transform: scale(1.06) !important;
-                box-shadow: 0 0 20px rgba(255, 107, 0, 0.35) !important;
-                transition: all 0.15s ease !important;
-            }
+            .mock-rules.touch-active,
             .contact-card.touch-active {
-                transform: scale(1.06) !important;
+                transform: scale(1.08) translateY(-3px) !important;
+                box-shadow: 0 10px 25px rgba(255, 107, 0, 0.45) !important;
+                background-color: rgba(255, 107, 0, 0.1) !important;
                 transition: all 0.15s ease !important;
             }
             .cert-card.touch-active h4,
@@ -1139,7 +1224,7 @@
         .fade-out { opacity: 0; }
 
         /* --- CUSTOM REQUIREMENTS --- */
-        .font-times { font-family: "Times New Roman", Times, serif !important; }
+        .font-times { font-family: "Plus Jakarta Sans", sans-serif !important; }
         .text-brown { color: #5C4A3A !important; }
         [data-theme="dark"] .text-brown { color: #D4C3B3 !important; }
         .mock-rules.text-brown-rules ul li { color: #5C4A3A !important; }
@@ -1816,6 +1901,8 @@
         setTimeout(checkVisibility, 500);
 
         // Supabase Integration
+        // OGOHLANTIRISH: Quyidagi maxfiy API kalitlari va Bot Tokenlarni ochiq kodda 
+        // qoldirish xavfsizlikka ziddir! Ularni backend'ga yashirish tavsiya qilinadi.
         const SUPABASE_URL = 'https://cxbtauopxdywwcxhpnds.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4YnRhdW9weGR5d3djeGhwbmRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjcwODMsImV4cCI6MjA5NDc0MzA4M30.ebj5JUVBb_XLru6t5mTjbNL2WT44AyWKr4PVbVa-sq8';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -1864,6 +1951,24 @@
                     `;
                     grid.insertAdjacentHTML('beforeend', cardHTML);
                 });
+
+                // Initialize mobile carousel
+                if (window.innerWidth <= 768 && courses.length > 1) {
+                    const controlsHTML = `
+                        <div class="carousel-controls" style="grid-column: 1/-1; width: 100%;">
+                            <button class="carousel-btn" id="prevCourse"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn" id="nextCourse"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    `;
+                    grid.insertAdjacentHTML('afterend', controlsHTML);
+                    
+                    document.getElementById('prevCourse').addEventListener('click', () => {
+                        grid.scrollBy({ left: -grid.clientWidth, behavior: 'smooth' });
+                    });
+                    document.getElementById('nextCourse').addEventListener('click', () => {
+                        grid.scrollBy({ left: grid.clientWidth, behavior: 'smooth' });
+                    });
+                }
             } catch (err) {
                 console.error("Kurslarni yuklashda xatolik:", err);
             }
@@ -2047,6 +2152,22 @@ Iltimos, tezroq aloqaga chiqing!</i> 🚀
                 setTimeout(() => { card.classList.remove('touch-active'); }, 400);
             }
         }, { passive: true });
+
+        // Mobile Results Stack Logic
+        const initResultsStack = () => {
+            if (window.innerWidth <= 768) {
+                const trophies = document.querySelectorAll('.trophy-card');
+                trophies.forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Barchasidan active classni olish
+                        trophies.forEach(c => c.classList.remove('stack-active'));
+                        // Bosilganini eng oldinga chiqarish
+                        this.classList.add('stack-active');
+                    });
+                });
+            }
+        };
+        initResultsStack();
     </script>
 </body>
 </html>
