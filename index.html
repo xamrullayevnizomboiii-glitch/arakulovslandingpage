@@ -46,6 +46,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
         html { scroll-behavior: smooth; }
 
         body {
@@ -836,15 +837,16 @@
                 display: flex !important;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-between;
-                flex: 1;
-                margin-right: 15px;
-                gap: 6px;
+                justify-content: flex-start;
+                flex: none;
+                margin-right: auto;
+                gap: 15px;
                 position: static;
                 background: transparent;
                 box-shadow: none;
                 padding: 10px 0 0 0;
                 transform: none;
+                width: auto;
             }
             #mobileActions .toggle-pill {
                 padding: 1px;
@@ -1202,13 +1204,17 @@
 
             /* --- MODAL --- */
             .modal-box {
+                position: absolute !important;
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
                 width: 90vw !important;
                 max-width: 400px !important;
                 max-height: 80vh !important;
                 overflow-y: auto !important;
                 padding: 20px 15px !important;
                 border-radius: 16px !important;
-                margin: 0 auto !important;
+                margin: 0 !important;
                 box-sizing: border-box !important;
             }
             .modal-box h3 {
