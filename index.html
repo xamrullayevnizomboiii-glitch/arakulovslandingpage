@@ -1248,23 +1248,55 @@
                 width: 100% !important;
             }
 
-            /* --- TOUCH ACTIVE ANIMATIONS (Pure CSS) --- */
-            .stat-card:active,
-            .cert-card:active,
-            .schedule-card:active,
-            .mock-rules:active,
-            .contact-card:active,
-            .mock-step:active {
-                transform: scale(0.97) !important;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            /* --- TOUCH ACTIVE ANIMATIONS --- */
+            .stat-card.touch-active,
+            .mock-step.touch-active,
+            .trophy-card.touch-active,
+            .cert-card.touch-active,
+            .course-grammar.touch-active,
+            .course-cefr.touch-active,
+            .course-kids.touch-active,
+            .schedule-card.touch-active,
+            .mock-rules.touch-active,
+            .contact-card.touch-active {
+                transform: scale(1.02) translateY(-2px) !important;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
+                transition: all 0.15s ease !important;
+                border-radius: 20px !important;
+                overflow: hidden !important;
             }
-            .course-grammar:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .course-cefr:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .course-kids:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .trophy-orange:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .trophy-blue:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .trophy-green:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .cert-card.touch-active h4,
+            .cert-card.touch-active p { color: #FFFFFF !important; }
+            .course-grammar.touch-active h3,
+            .course-grammar.touch-active .course-price,
+            .course-grammar.touch-active .course-details li { color: #FFFFFF !important; }
+            .course-grammar.touch-active .btn-blue { background: #FFFFFF !important; color: #3B82F6 !important; }
+            .course-kids.touch-active h3,
+            .course-kids.touch-active .course-price,
+            .course-kids.touch-active .course-details li { color: #FFFFFF !important; }
+            .course-kids.touch-active .btn-green { background: #FFFFFF !important; color: #22C55E !important; }
+            .course-cefr.touch-active h3,
+            .course-cefr.touch-active .course-price,
+            .course-cefr.touch-active .course-details li { color: #FFFFFF !important; }
+            .course-cefr.touch-active .btn-primary { background: #FFFFFF !important; color: #FF6B00 !important; }
+            .trophy-orange.touch-active .trophy-icon,
+            .trophy-orange.touch-active .trophy-num,
+            .trophy-orange.touch-active .trophy-text { color: #FFFFFF !important; }
+            .trophy-blue.touch-active .trophy-icon,
+            .trophy-blue.touch-active .trophy-num,
+            .trophy-blue.touch-active .trophy-text { color: #FFFFFF !important; }
+            .trophy-green.touch-active .trophy-icon,
+            .trophy-green.touch-active .trophy-num,
+            .trophy-green.touch-active .trophy-text { color: #FFFFFF !important; }
+            .contact-card.telegram.touch-active i,
+            .contact-card.telegram.touch-active h4,
+            .contact-card.telegram.touch-active p { color: #FFFFFF !important; }
+            .contact-card.instagram.touch-active i { background: none !important; -webkit-text-fill-color: #FFFFFF !important; }
+            .contact-card.instagram.touch-active h4,
+            .contact-card.instagram.touch-active p { color: #FFFFFF !important; }
+            .contact-card.phone.touch-active i,
+            .contact-card.phone.touch-active h4,
+            .contact-card.phone.touch-active p { color: #FFFFFF !important; }
         }
 
         .fade-transition {
@@ -1363,21 +1395,7 @@
         .contact-card.phone { background: rgba(37, 209, 102, 0.1) !important; border: 2px solid #25D166 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .contact-card.phone:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(37, 209, 102, 0.4) !important; background: #25D166 !important; }
         .contact-card.phone:hover i, .contact-card.phone:hover h4, .contact-card.phone:hover p { color: #FFFFFF !important; }
-    
-        /* --- SVG MOTIFS FOR MOCK CARDS --- */
-        .motif-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; opacity: 0.15; pointer-events: none; z-index: 0; }
-        .motif-svg { width: 100%; height: 100%; object-fit: cover; }
-        .mock-content.relative { position: relative; z-index: 1; }
-        .ring-1 { animation: spin 15s linear infinite; transform-origin: 50% 50%; }
-        .ring-2 { animation: spin-reverse 20s linear infinite; transform-origin: 50% 50%; }
-        .ring-3 { animation: spin 10s linear infinite; transform-origin: 50% 50%; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
-        .scanner-line { animation: scan 3s ease-in-out infinite alternate; }
-        @keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(280px); } }
-        .pulse-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s linear infinite; }
-        @keyframes dash { 0% { stroke-dashoffset: 1000; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1000; } }
-</style>
+    </style>
 </head>
 <body data-theme="light">
 
@@ -1426,7 +1444,7 @@
     <!-- Hero Section -->
     <section class="hero fade-transition" id="home">
         <div class="container hero-content">
-            <div class="hero-text" data-aos="fade-up">
+            <div class="hero-text" data-aos="fade-right">
                 <h1 data-i18n="hero_title" class="font-times">Ingliz tilini professional darajada o'rganing</h1>
                 <p class="desc text-brown" data-i18n="hero_desc">6 yillik tajriba, 70+ B2 sertifikatli o'quvchilar, amaliy va natijaga yo'naltirilgan ta'lim.</p>
                 
@@ -1442,7 +1460,7 @@
                 </div>
             </div>
 
-            <div class="hero-img-wrapper" data-aos="fade-up">
+            <div class="hero-img-wrapper" data-aos="fade-left">
                 <div class="hero-circle"></div>
                 <img src="photo_2026-05-18_09-57-31.jpg" alt="Ustoz" class="hero-img">
                 <div class="floating-badge">
@@ -1455,22 +1473,22 @@
     <!-- Stats Section -->
     <section class="py-20 bg-alt fade-transition">
         <div class="container stats-grid" id="statsSection">
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="0">
                 <div class="stat-icon">⏳</div>
                 <div class="stat-num counter" data-target="6">0</div>
                 <div class="stat-text" data-i18n="stats_exp">Yil tajriba</div>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
                 <div class="stat-icon">👨‍🎓</div>
                 <div class="stat-num counter" data-target="500">0</div>
                 <div class="stat-text" data-i18n="stats_students">O'quvchilar</div>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
                 <div class="stat-icon">🏆</div>
                 <div class="stat-num counter" data-target="70">0</div>
                 <div class="stat-text" data-i18n="stats_certs">B2 Sertifikat</div>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
                 <div class="stat-icon">📱</div>
                 <div class="stat-num counter" data-target="15000">0</div>
                 <div class="stat-text" data-i18n="stats_insta">Instagram obunachi</div>
@@ -1481,10 +1499,10 @@
     <!-- About Section -->
     <section class="py-20 fade-transition" id="about">
         <div class="container about-grid">
-            <div data-aos="fade-up">
+            <div data-aos="fade-right">
                 <img src="photo_2026-05-18_09-57-31.jpg" alt="Ustoz" class="about-img">
             </div>
-            <div data-aos="fade-up">
+            <div data-aos="fade-left">
                 <h2 data-i18n="about_title" style="font-size: 2.5rem; margin-bottom: 1.5rem;">Asadbek Arakulov haqida</h2>
                 <p class="desc about-desc text-brown" data-i18n="about_full_desc">6 yillik tajriba davomida 500+ o'quvchiga ingliz tilini o'rgatib kelmoqdaman. Darslarim faqat nazariy emas — har bir dars amaliyotga asoslangan. Har shanba CEFR mock test o'tkazaman. Mock testdan 55+ ball olgan o'quvchilarga imtihon registratsiya pulini o'zim to'layman. Instagramda 15K+ obunachi bilan faol muloqotda bo'laman.</p>
                 
@@ -1534,17 +1552,17 @@
             <p class="desc mock-desc" data-i18n="mock_desc">O'zbekistonda birinchi marta — mock testdan o'tgan o'quvchilarga imtihon registratsiya pulini ustoz to'laydi!</p>
             
             <div class="mock-steps">
-                <div class="mock-step" data-aos="fade-up">
+                <div class="mock-step" data-aos="zoom-in">
                     <div class="mock-icon">📝</div>
                     <h4 data-i18n="mock_s1_title">Har shanba CEFR mock test</h4>
                     <span class="desc text-brown" data-i18n="mock_s1_desc">Haqiqiy imtihon sharoitida test topshirasiz</span>
                 </div>
-                <div class="mock-step" data-aos="fade-up" data-aos-delay="150">
+                <div class="mock-step" data-aos="zoom-in" data-aos-delay="150">
                     <div class="mock-icon">🎯</div>
                     <h4 data-i18n="mock_s2_title">55+ ball olasiz</h4>
                     <span class="desc text-brown" data-i18n="mock_s2_desc">Maqsadli ball — B2 sertifikatiga yo'l</span>
                 </div>
-                <div class="mock-step" data-aos="fade-up" data-aos-delay="300">
+                <div class="mock-step" data-aos="zoom-in" data-aos-delay="300">
                     <div class="mock-icon">🎁</div>
                     <h4 data-i18n="mock_s3_title">Imtihon puli ustozdan</h4>
                     <span class="desc text-brown" data-i18n="mock_s3_desc">Registratsiya to'lovini ustoz Asadbek o'z zimmasiga oladi</span>
@@ -1632,7 +1650,7 @@
     <hr class="section-divider">
     <section class="py-20 bg-alt fade-transition">
         <div class="container schedule-grid">
-            <div data-aos="fade-up">
+            <div data-aos="fade-right">
                 <div class="schedule-card">
                     <h3 style="font-size: 2rem; margin-bottom: 2rem;" data-i18n="sched_title" class="font-times">Dars Jadvali</h3>
                     
@@ -1657,7 +1675,7 @@
                 </div>
             </div>
             
-            <div class="map-wrapper" data-aos="fade-up">
+            <div class="map-wrapper" data-aos="fade-left">
                 <iframe 
                   src="https://www.google.com/maps?q=40.414845,67.180910&z=16&output=embed"
                   width="100%" 
@@ -1758,37 +1776,8 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Initialize GSAP Mobile Stacked Cards Animation
-        function initMobileStackedCards() {
-            if (window.innerWidth <= 768) {
-                let cards = gsap.utils.toArray('.mock-step');
-                cards.forEach((card, index) => {
-                    if (index !== cards.length - 1) {
-                        gsap.to(card, {
-                            scale: 0.9,
-                            filter: "blur(10px)",
-                            opacity: 0.5,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: cards[index + 1],
-                                start: "top 70%",
-                                end: "top 20%",
-                                scrub: true
-                            }
-                        });
-                    }
-                });
-            }
-        }
-
-        window.addEventListener('load', () => {
-            initMobileStackedCards();
-        });
-
         // AOS Init
         AOS.init({ once: false, offset: 100, duration: 800 });
 
@@ -2264,7 +2253,15 @@ Iltimos, tezroq aloqaga chiqing!</i> 🚀
         checkMobile();
         window.addEventListener('resize', checkMobile);
 
-        // Touch animations removed, handled purely by CSS :active state in media queries
+        // Touch animations for mobile cards
+        const touchTargets = '.stat-card, .cert-card, .course-card, .mock-step, .mock-rules, .trophy-card, .schedule-card, .contact-card';
+        document.addEventListener('touchstart', (e) => {
+            const card = e.target.closest(touchTargets);
+            if (card) {
+                card.classList.add('touch-active');
+                setTimeout(() => { card.classList.remove('touch-active'); }, 400);
+            }
+        }, { passive: true });
 
         // Mobile Results Carousel Logic
         const initResultsCarousel = () => {
