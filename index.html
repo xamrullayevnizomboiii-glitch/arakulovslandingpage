@@ -435,18 +435,35 @@
 
         .certs-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
         }
 
         .cert-card {
-            background: var(--bg-alt);
-            border: 1px solid var(--accent);
-            padding: 1.5rem;
+            background: rgba(255,107,0,0.08);
+            border: 2px solid #FF6B00;
             border-radius: 12px;
+            padding: 1.25rem 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .cert-card:last-child {
+            background: rgba(24,95,165,0.08);
+            border-color: #185FA5;
+        }
+
+        .cert-card::after {
+            content: '';
+            display: block;
+            width: 100%;
+            border-top: 1px solid rgba(255,107,0,0.25);
+        }
+        .cert-card:last-child::after {
+            border-color: rgba(24,95,165,0.25);
         }
 
         [data-theme="dark"] .cert-card {
@@ -454,11 +471,11 @@
         }
 
         .cert-card h4 {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent);
-            font-size: 1.2rem;
+            font-size: 1rem;
+            color: #FF6B00;
+        }
+        .cert-card:last-child h4 {
+            color: #185FA5;
         }
 
         .cert-card p {
@@ -486,11 +503,8 @@
 
         /* Grammar Card */
         .course-grammar {
-            border: 1px solid rgba(59,130,246,0.3);
-        }
-        .course-grammar:hover {
-            box-shadow: 0 0 30px rgba(59,130,246,0.15);
-            transform: translateY(-5px);
+            background: rgba(59, 130, 246, 0.06);
+            border: 2px solid #3B82F6;
         }
         .course-grammar h3 { color: var(--accent-blue); font-size: 2rem; }
         .course-grammar .course-icon { font-size: 3rem; margin-bottom: 1rem; }
@@ -508,15 +522,9 @@
             100% { background-position: 200% 50%; }
         }
         .course-cefr {
-            border: 2px solid transparent;
-            background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box, 
-                        linear-gradient(90deg, #FF6B00, transparent, #FF9A00, transparent, #FF6B00) border-box;
-            background-size: 200% 200%;
-            animation: shimmerBorder 3s linear infinite;
-        }
-        .course-cefr:hover {
-            box-shadow: 0 0 30px rgba(255,107,0,0.2);
-            transform: translateY(-5px);
+            background: rgba(255, 107, 0, 0.06);
+            border: 2px solid #FF6B00;
+            animation: none;
         }
         .course-cefr h3 { color: var(--accent); font-size: 2rem; }
         .course-cefr .course-icon { font-size: 3rem; margin-bottom: 1rem; }
@@ -883,7 +891,10 @@
                 gap: 1.5rem;
             }
             .hero-text {
-                display: contents;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
             }
             .hero-img-wrapper {
                 order: 3;
@@ -966,35 +977,34 @@
 
             /* --- ABOUT SECTION --- */
             .about-grid {
-                display: grid;
-                grid-template-columns: 100px 1fr;
+                grid-template-columns: 1fr;
                 grid-template-areas:
-                    "image title"
-                    "desc desc"
-                    "list list"
-                    "cert-title cert-title"
-                    "certs certs";
-                gap: 15px;
-                align-items: center;
+                    "image"
+                    "title"
+                    "desc"
+                    "list"
+                    "cert-title"
+                    "certs";
+                justify-items: center;
             }
             .about-grid > div {
                 display: contents;
             }
             .about-img {
                 grid-area: image;
-                width: 100px !important;
-                height: 100px !important;
+                width: 180px !important;
+                height: 180px !important;
                 border-radius: 50% !important;
                 object-fit: cover !important;
-                margin: 0 !important;
-                border: 3px solid var(--accent) !important;
+                object-position: center top !important;
+                margin: 0 auto !important;
             }
             .about-grid h2 {
                 grid-area: title;
-                font-size: 1.3rem !important;
+                text-align: center;
+                font-size: 1.5rem !important;
                 margin-bottom: 0 !important;
                 line-height: 1.3;
-                text-align: left;
             }
             .about-desc { 
                 grid-area: desc;
@@ -1079,17 +1089,29 @@
 
             /* --- MOCK TEST SECTION --- */
             .mock-steps {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
             }
             .mock-step {
+                position: sticky;
+                top: 100px;
+                margin-bottom: 16px;
+                z-index: 1;
+                transform-origin: top center;
                 padding: 2rem 1.5rem;
+            }
+            .mock-step:nth-child(1) { top: 90px; z-index: 1; }
+            .mock-step:nth-child(2) { top: 104px; z-index: 2; }
+            .mock-step:nth-child(3) { top: 118px; z-index: 3; }
+            .mock-rules {
+                position: sticky;
+                top: 132px;
+                z-index: 4;
+                padding: 1.5rem 1rem;
             }
             .mock-icon { font-size: 2.5rem; }
             .mock-step h4 { font-size: 1.1rem; }
-            .mock-rules {
-                padding: 1.5rem 1rem;
-            }
             .mock-rules ul li {
                 font-size: 0.9rem;
             }
@@ -1160,17 +1182,13 @@
             }
             .contact-card {
                 width: 100%;
-                padding: 1.25rem 1.5rem;
-                display: flex;
-                flex-direction: row;
+                padding: 2rem 1.5rem;
+                flex-direction: column;
                 align-items: center;
-                gap: 1rem;
-                border-radius: 16px;
-                aspect-ratio: auto;
+                text-align: center;
             }
-            .contact-card i { font-size: 2rem; }
-            .contact-card h4 { font-size: 1.1rem; margin: 0; text-align: left; }
-            .contact-card p { font-size: 0.9rem; text-align: left; word-break: normal; }
+            .contact-card h4 { font-size: 1.1rem; text-align: center; }
+            .contact-card p { font-size: 0.9rem; text-align: center; }
 
             /* --- FOOTER --- */
             .footer-content {
@@ -1232,11 +1250,7 @@
             /* --- TOUCH ACTIVE ANIMATIONS --- */
             .stat-card.touch-active,
             .mock-step.touch-active,
-            .trophy-card.touch-active,
             .cert-card.touch-active,
-            .course-grammar.touch-active,
-            .course-cefr.touch-active,
-            .course-kids.touch-active,
             .schedule-card.touch-active,
             .mock-rules.touch-active,
             .contact-card.touch-active {
@@ -1246,29 +1260,47 @@
                 overflow: hidden;
                 will-change: transform;
             }
-            .cert-card.touch-active h4,
-            .cert-card.touch-active p { color: #FFFFFF !important; }
+            /* Course cards — faqat scale, fon o'zgarmasin */
+            .course-grammar.touch-active { 
+                transform: scale(0.97); 
+                background: rgba(59,130,246,0.06) !important; 
+                transition: all 0.15s ease;
+            }
+            .course-cefr.touch-active { 
+                transform: scale(0.97); 
+                background: rgba(255,107,0,0.06) !important; 
+                transition: all 0.15s ease;
+            }
+            .course-kids.touch-active { 
+                transform: scale(0.97); 
+                background: rgba(34,197,94,0.06) !important; 
+                transition: all 0.15s ease;
+            }
+            /* Trophy cards — faqat scale, fon o'zgarmasin */
+            .trophy-orange.touch-active { 
+                transform: scale(0.97); 
+                background: rgba(255,107,0,0.1) !important; 
+            }
+            .trophy-blue.touch-active { 
+                transform: scale(0.97); 
+                background: rgba(59,130,246,0.1) !important; 
+            }
+            .trophy-green.touch-active { 
+                transform: scale(0.97); 
+                background: rgba(34,197,94,0.1) !important; 
+            }
+            /* touch-active da matn rangi o'zgarmasin */
             .course-grammar.touch-active h3,
             .course-grammar.touch-active .course-price,
-            .course-grammar.touch-active .course-details li { color: #FFFFFF !important; }
-            .course-grammar.touch-active .btn-blue { background: #FFFFFF !important; color: #3B82F6 !important; }
-            .course-kids.touch-active h3,
-            .course-kids.touch-active .course-price,
-            .course-kids.touch-active .course-details li { color: #FFFFFF !important; }
-            .course-kids.touch-active .btn-green { background: #FFFFFF !important; color: #22C55E !important; }
+            .course-grammar.touch-active .course-details li { color: inherit !important; }
             .course-cefr.touch-active h3,
             .course-cefr.touch-active .course-price,
-            .course-cefr.touch-active .course-details li { color: #FFFFFF !important; }
-            .course-cefr.touch-active .btn-primary { background: #FFFFFF !important; color: #FF6B00 !important; }
-            .trophy-orange.touch-active .trophy-icon,
-            .trophy-orange.touch-active .trophy-num,
-            .trophy-orange.touch-active .trophy-text { color: #FFFFFF !important; }
-            .trophy-blue.touch-active .trophy-icon,
-            .trophy-blue.touch-active .trophy-num,
-            .trophy-blue.touch-active .trophy-text { color: #FFFFFF !important; }
-            .trophy-green.touch-active .trophy-icon,
-            .trophy-green.touch-active .trophy-num,
-            .trophy-green.touch-active .trophy-text { color: #FFFFFF !important; }
+            .course-cefr.touch-active .course-details li { color: inherit !important; }
+            .course-kids.touch-active h3,
+            .course-kids.touch-active .course-price,
+            .course-kids.touch-active .course-details li { color: inherit !important; }
+            .cert-card.touch-active h4,
+            .cert-card.touch-active p { color: #FFFFFF !important; }
             .contact-card.telegram.touch-active i,
             .contact-card.telegram.touch-active h4,
             .contact-card.telegram.touch-active p { color: #FFFFFF !important; }
@@ -1287,7 +1319,8 @@
         .fade-out { opacity: 0; }
 
         /* --- CUSTOM REQUIREMENTS --- */
-        .font-times { font-family: "Plus Jakarta Sans", sans-serif !important; }
+        .font-times { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+        body, h1, h2, h3, h4, h5, h6, p, .btn, .nav-link, .logo { font-family: 'Plus Jakarta Sans', sans-serif; }
         .text-brown { color: #5C4A3A !important; }
         [data-theme="dark"] .text-brown { color: #D4C3B3 !important; }
         .mock-rules.text-brown-rules ul li { color: #5C4A3A !important; }
@@ -1296,15 +1329,15 @@
 
         .stat-card { border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .cert-card { border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .cert-card { transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .course-grammar { border: 2px solid #3B82F6; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .course-kids { border: 2px solid #22C55E; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-grammar { background: rgba(59, 130, 246, 0.06); border: 2px solid #3B82F6; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-kids { background: rgba(34, 197, 94, 0.06); border: 2px solid #22C55E; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .course-kids h3 { color: #22C55E; font-size: 2rem; }
         .course-kids .course-icon { font-size: 3rem; margin-bottom: 1rem; }
         .btn-green { background: #22C55E; color: white; width: 100%; margin-top: auto; }
 
-        .course-cefr { border: 2px solid #FF6B00; background: var(--card-bg); animation: none; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-cefr { background: rgba(255, 107, 0, 0.06); border: 2px solid #FF6B00; animation: none; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
         .mock-step { background: rgba(255, 107, 0, 0.15); border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .mock-rules { background: rgba(255, 107, 0, 0.15); border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -1340,20 +1373,41 @@
             .cert-card:hover { transform: scale(1.06) translateY(-6px); box-shadow: 0 18px 40px rgba(255, 107, 0, 0.35), 0 0 20px rgba(255, 107, 0, 0.15); background: #FF6B00; }
             .cert-card:hover h4, .cert-card:hover p { color: #FFFFFF; }
 
-            .course-grammar:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 18px 40px rgba(59, 130, 246, 0.35), 0 0 20px rgba(59, 130, 246, 0.15); background: #3B82F6; }
-            .course-grammar:hover h3, .course-grammar:hover .course-icon, .course-grammar:hover .course-price, 
-            .course-grammar:hover .course-details, .course-grammar:hover .course-details li, .course-grammar:hover .course-details span { color: #FFFFFF; }
-            .course-grammar:hover .btn-blue { background: #FFFFFF; color: #3B82F6; }
+            /* Grammar kursi — ko'k */
+            .course-grammar:hover {
+                background: #3B82F6;
+                transform: scale(1.05) translateY(-6px);
+                box-shadow: 0 18px 40px rgba(59,130,246,0.35);
+            }
+            .course-grammar:hover h3,
+            .course-grammar:hover .course-icon,
+            .course-grammar:hover .course-price,
+            .course-grammar:hover .course-details li { color: #fff; }
+            .course-grammar:hover .btn-blue { background: #fff; color: #3B82F6; }
 
-            .course-kids:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 18px 40px rgba(34, 197, 94, 0.35), 0 0 20px rgba(34, 197, 94, 0.15); background: #22C55E; }
-            .course-kids:hover h3, .course-kids:hover .course-icon, .course-kids:hover .course-price, 
-            .course-kids:hover .course-details, .course-kids:hover .course-details li, .course-kids:hover .course-details span { color: #FFFFFF; }
-            .course-kids:hover .btn-green { background: #FFFFFF; color: #22C55E; }
+            /* CEFR kursi — to'q sariq */
+            .course-cefr:hover {
+                background: #FF6B00;
+                transform: scale(1.05) translateY(-6px);
+                box-shadow: 0 18px 40px rgba(255,107,0,0.35);
+            }
+            .course-cefr:hover h3,
+            .course-cefr:hover .course-icon,
+            .course-cefr:hover .course-price,
+            .course-cefr:hover .course-details li { color: #fff; }
+            .course-cefr:hover .btn-primary { background: #fff; color: #FF6B00; }
 
-            .course-cefr:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 18px 40px rgba(255, 107, 0, 0.35), 0 0 20px rgba(255, 107, 0, 0.15); background: #FF6B00; }
-            .course-cefr:hover h3, .course-cefr:hover .course-icon, .course-cefr:hover .course-price, 
-            .course-cefr:hover .course-details, .course-cefr:hover .course-details li, .course-cefr:hover .course-details span { color: #FFFFFF; }
-            .course-cefr:hover .btn-primary { background: #FFFFFF; color: #FF6B00; }
+            /* Kids kursi — yashil */
+            .course-kids:hover {
+                background: #22C55E;
+                transform: scale(1.05) translateY(-6px);
+                box-shadow: 0 18px 40px rgba(34,197,94,0.35);
+            }
+            .course-kids:hover h3,
+            .course-kids:hover .course-icon,
+            .course-kids:hover .course-price,
+            .course-kids:hover .course-details li { color: #fff; }
+            .course-kids:hover .btn-green { background: #fff; color: #22C55E; }
 
             .mock-step:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 15px 35px rgba(255, 107, 0, 0.3); }
             .mock-rules:hover { transform: scale(1.02) translateY(-3px); box-shadow: 0 15px 35px rgba(255, 107, 0, 0.3); }
@@ -1545,12 +1599,24 @@
                 <h3 class="certs-title" data-i18n="certs_title">Ustoz Sertifikatlari va Yutuqlari</h3>
                 <div class="certs-grid">
                     <div class="cert-card">
-                        <h4>🏅 CEFR C1</h4>
-                        <p data-i18n="cert_c1">Ingliz tilida yuqori malaka darajasi</p>
+                        <div style="width:52px;height:52px;border-radius:50%;background:#FF6B00;display:flex;align-items:center;justify-content:center;">
+                            <span style="font-size:24px;">🏅</span>
+                        </div>
+                        <div>
+                            <h4>CEFR C1</h4>
+                            <p data-i18n="cert_c1">Ingliz tilida yuqori malaka darajasi</p>
+                        </div>
+                        <span style="font-size:11px;color:#FF6B00;font-weight:600;">Tasdiqlangan ✓</span>
                     </div>
                     <div class="cert-card">
-                        <h4>🏅 APTIS</h4>
-                        <p data-i18n="cert_aptis">British Council tomonidan berilgan xalqaro sertifikat</p>
+                        <div style="width:52px;height:52px;border-radius:50%;background:#185FA5;display:flex;align-items:center;justify-content:center;">
+                            <span style="font-size:24px;">🏅</span>
+                        </div>
+                        <div>
+                            <h4>APTIS</h4>
+                            <p data-i18n="cert_aptis">British Council tomonidan berilgan xalqaro sertifikat</p>
+                        </div>
+                        <span style="font-size:11px;color:#185FA5;font-weight:600;">Xalqaro ✓</span>
                     </div>
                 </div>
             </div>
@@ -1782,16 +1848,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // AOS Init — mobile: soft fade-up only; desktop: full animations
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('[data-aos]').forEach(el => {
-                el.setAttribute('data-aos', 'fade-up');
-                el.removeAttribute('data-aos-delay');
-            });
-            AOS.init({ once: true, offset: 30, duration: 400, easing: 'ease-out' });
-        } else {
-            AOS.init({ once: false, offset: 100, duration: 800, mirror: true });
-        }
+        // AOS Init
+        AOS.init({ duration: 800, once: true, offset: 80 });
 
         // AOS refresh on anchor click (ensures animations replay when navigating)
         document.querySelectorAll('a[href^="#"]').forEach(link => {
