@@ -1262,76 +1262,23 @@
                 width: 100% !important;
             }
 
-            /* --- TOUCH ACTIVE ANIMATIONS --- */
-            .stat-card.touch-active {
-                transform: scale(0.97);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                transition: all 0.15s ease;
-                overflow: hidden;
-                will-change: transform;
-                background: rgba(255, 107, 0, 0.12) !important;
+            /* --- TOUCH ACTIVE ANIMATIONS (Pure CSS) --- */
+            .stat-card:active,
+            .cert-card:active,
+            .schedule-card:active,
+            .mock-rules:active,
+            .contact-card:active,
+            .mock-step:active {
+                transform: scale(0.97) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
             }
-            .mock-step.touch-active,
-            .cert-card.touch-active,
-            .schedule-card.touch-active,
-            .mock-rules.touch-active,
-            .contact-card.touch-active {
-                transform: scale(0.97);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                transition: all 0.15s ease;
-                overflow: hidden;
-                will-change: transform;
-            }
-            /* Course cards — faqat scale, fon o'zgarmasin */
-            .course-grammar.touch-active { 
-                transform: scale(0.97); 
-                background: rgba(59,130,246,0.06) !important; 
-                transition: all 0.15s ease;
-            }
-            .course-cefr.touch-active { 
-                transform: scale(0.97); 
-                background: rgba(255,107,0,0.06) !important; 
-                transition: all 0.15s ease;
-            }
-            .course-kids.touch-active { 
-                transform: scale(0.97); 
-                background: rgba(34,197,94,0.06) !important; 
-                transition: all 0.15s ease;
-            }
-            /* Trophy cards — faqat scale, fon o'zgarmasin */
-            .trophy-orange.touch-active { 
-                transform: scale(0.97); 
-                background: rgba(255,107,0,0.1) !important; 
-            }
-            .trophy-blue.touch-active { 
-                transform: scale(0.97); 
-                background: rgba(59,130,246,0.1) !important; 
-            }
-            .trophy-green.touch-active { 
-                transform: scale(0.97); 
-                background: rgba(34,197,94,0.1) !important; 
-            }
-            /* touch-active da matn rangi o'zgarmasin */
-            .course-grammar.touch-active h3,
-            .course-grammar.touch-active .course-price,
-            .course-grammar.touch-active .course-details li { color: inherit !important; }
-            .course-cefr.touch-active h3,
-            .course-cefr.touch-active .course-price,
-            .course-cefr.touch-active .course-details li { color: inherit !important; }
-            .course-kids.touch-active h3,
-            .course-kids.touch-active .course-price,
-            .course-kids.touch-active .course-details li { color: inherit !important; }
-            .cert-card.touch-active h4,
-            .cert-card.touch-active p { color: #FFFFFF !important; }
-            .contact-card.telegram.touch-active i,
-            .contact-card.telegram.touch-active h4,
-            .contact-card.telegram.touch-active p { color: #FFFFFF !important; }
-            .contact-card.instagram.touch-active i { background: none !important; -webkit-text-fill-color: #FFFFFF !important; }
-            .contact-card.instagram.touch-active h4,
-            .contact-card.instagram.touch-active p { color: #FFFFFF !important; }
-            .contact-card.phone.touch-active i,
-            .contact-card.phone.touch-active h4,
-            .contact-card.phone.touch-active p { color: #FFFFFF !important; }
+            .course-grammar:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .course-cefr:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .course-kids:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .trophy-orange:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .trophy-blue:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .trophy-green:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
         }
 
         .fade-transition {
@@ -1571,22 +1518,22 @@
     <section class="hero fade-transition" id="home">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1 data-i18n="hero_title" class="font-times" data-aos="fade-right">Ingliz tilini professional darajada o'rganing</h1>
-                <p class="desc text-brown" data-i18n="hero_desc" data-aos="fade-right" data-aos-delay="100">6 yillik tajriba, 70+ B2 sertifikatli o'quvchilar, amaliy va natijaga yo'naltirilgan ta'lim.</p>
+                <h1 data-i18n="hero_title" class="font-times" data-aos="fade-up">Ingliz tilini professional darajada o'rganing</h1>
+                <p class="desc text-brown" data-i18n="hero_desc" data-aos="fade-up" data-aos-delay="100">6 yillik tajriba, 70+ B2 sertifikatli o'quvchilar, amaliy va natijaga yo'naltirilgan ta'lim.</p>
                 
-                <div class="hero-buttons" data-aos="fade-right" data-aos-delay="200">
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
                     <a href="#contact" class="btn btn-primary" data-i18n="btn_enroll">Darsga yozilish</a>
                     <a href="#about" class="btn btn-outline" data-i18n="btn_more">Batafsil ma'lumot</a>
                 </div>
 
-                <div class="mini-stats" data-aos="fade-right" data-aos-delay="300">
+                <div class="mini-stats" data-aos="fade-up" data-aos-delay="300">
                     <span><i class="fas fa-users"></i> <span data-i18n="hero_stat1">500+ O'quvchi</span></span> |
                     <span><i class="fas fa-certificate"></i> <span data-i18n="hero_stat2">70+ B2</span></span> |
                     <span><i class="fab fa-instagram"></i> <span data-i18n="hero_stat3">15K+ Instagram</span></span>
                 </div>
             </div>
 
-            <div class="hero-img-wrapper" data-aos="fade-left">
+            <div class="hero-img-wrapper" data-aos="fade-up" data-aos-delay="150">
                 <div class="hero-circle"></div>
                 <img src="photo_2026-05-18_09-57-31.jpg" alt="Ustoz" class="hero-img">
                 <div class="floating-badge">
@@ -1599,22 +1546,22 @@
     <!-- Stats Section -->
     <section class="py-20 bg-alt fade-transition">
         <div class="container stats-grid" id="statsSection">
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="0">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="stat-icon">⏳</div>
                 <div class="stat-num counter" data-target="6">0</div>
                 <div class="stat-text" data-i18n="stats_exp">Yil tajriba</div>
             </div>
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-icon">👨‍🎓</div>
                 <div class="stat-num counter" data-target="500">0</div>
                 <div class="stat-text" data-i18n="stats_students">O'quvchilar</div>
             </div>
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="stat-icon">🏆</div>
                 <div class="stat-num counter" data-target="70">0</div>
                 <div class="stat-text" data-i18n="stats_certs">B2 Sertifikat</div>
             </div>
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="stat-icon">📱</div>
                 <div class="stat-num counter" data-target="15000">0</div>
                 <div class="stat-text" data-i18n="stats_insta">Instagram obunachi</div>
@@ -1625,10 +1572,10 @@
     <!-- About Section -->
     <section class="py-20 fade-transition" id="about">
         <div class="container about-grid">
-            <div data-aos="fade-right">
+            <div data-aos="fade-up">
                 <img src="photo_2026-05-18_09-57-31.jpg" alt="Ustoz" class="about-img">
             </div>
-            <div data-aos="fade-left">
+            <div data-aos="fade-up" data-aos-delay="100">
                 <h2 data-i18n="about_title" style="font-size: 2.5rem; margin-bottom: 1.5rem;">Asadbek Arakulov haqida</h2>
                 <p class="desc about-desc text-brown" data-i18n="about_full_desc">6 yillik tajriba davomida 500+ o'quvchiga ingliz tilini o'rgatib kelmoqdaman. Darslarim faqat nazariy emas — har bir dars amaliyotga asoslangan. Har shanba CEFR mock test o'tkazaman. Mock testdan 55+ ball olgan o'quvchilarga imtihon registratsiya pulini o'zim to'layman. Instagramda 15K+ obunachi bilan faol muloqotda bo'laman.</p>
                 
@@ -1690,7 +1637,7 @@
             <p class="desc mock-desc" data-i18n="mock_desc">O'zbekistonda birinchi marta — mock testdan o'tgan o'quvchilarga imtihon registratsiya pulini ustoz to'laydi!</p>
             
             <div class="mock-steps">
-                <div class="mock-step mock-step-1" data-aos="zoom-in">
+                <div class="mock-step mock-step-1" data-aos="fade-up">
                     <div class="motif-bg">
                         <svg viewBox="0 0 300 300" class="motif-svg">
                             <circle cx="150" cy="150" r="140" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 8" class="ring-1 origin-center" />
@@ -1705,7 +1652,7 @@
                         <span class="desc text-brown" data-i18n="mock_s1_desc">Haqiqiy imtihon sharoitida test topshirasiz</span>
                     </div>
                 </div>
-                <div class="mock-step mock-step-2" data-aos="zoom-in" data-aos-delay="150">
+                <div class="mock-step mock-step-2" data-aos="fade-up" data-aos-delay="150">
                     <div class="motif-bg">
                         <svg viewBox="0 0 300 300" class="motif-svg">
                             <!-- Generate grid dots roughly -->
@@ -1723,7 +1670,7 @@
                         <span class="desc text-brown" data-i18n="mock_s2_desc">Maqsadli ball — B2 sertifikatiga yo'l</span>
                     </div>
                 </div>
-                <div class="mock-step mock-step-3" data-aos="zoom-in" data-aos-delay="300">
+                <div class="mock-step mock-step-3" data-aos="fade-up" data-aos-delay="300">
                     <div class="motif-bg">
                         <svg viewBox="0 0 400 200" class="motif-svg w-[120%] rotate-12">
                             <path class="pulse-path" d="M0,100 L120,100 L150,30 L180,170 L210,50 L240,150 L270,100 L400,100" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
@@ -1795,7 +1742,7 @@
     <hr class="section-divider">
     <section class="py-20 bg-alt fade-transition">
         <div class="container schedule-grid">
-            <div data-aos="fade-right">
+            <div data-aos="fade-up">
                 <div class="schedule-card">
                     <h3 style="font-size: 2rem; margin-bottom: 2rem;" data-i18n="sched_title" class="font-times">Dars Jadvali</h3>
                     
@@ -1820,7 +1767,7 @@
                 </div>
             </div>
             
-            <div class="map-wrapper" data-aos="fade-left">
+            <div class="map-wrapper" data-aos="fade-up" data-aos-delay="150">
                 <iframe 
                   src="https://www.google.com/maps?q=40.414845,67.180910&z=16&output=embed"
                   width="100%" 
@@ -2401,15 +2348,7 @@ Iltimos, tezroq aloqaga chiqing!</i> 🚀
         checkMobile();
         window.addEventListener('resize', checkMobile);
 
-        // Touch animations for mobile cards
-        const touchTargets = '.stat-card, .cert-card, .course-card, .mock-step, .mock-rules, .trophy-card, .schedule-card, .contact-card';
-        document.addEventListener('touchstart', (e) => {
-            const card = e.target.closest(touchTargets);
-            if (card) {
-                card.classList.add('touch-active');
-                setTimeout(() => { card.classList.remove('touch-active'); }, 400);
-            }
-        }, { passive: true });
+        // Touch animations removed, handled purely by CSS :active state in media queries
 
         // Mobile Results Carousel Logic
         const initResultsCarousel = () => {
@@ -2464,8 +2403,8 @@ Iltimos, tezroq aloqaga chiqing!</i> 🚀
                             ease: "none",
                             scrollTrigger: {
                                 trigger: cards[index + 1],
-                                start: "top bottom-=100",
-                                end: "top center",
+                                start: "top 70%",
+                                end: "top 20%",
                                 scrub: true
                             }
                         });
