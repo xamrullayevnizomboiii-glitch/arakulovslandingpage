@@ -65,7 +65,6 @@
             transition: var(--transition);
             line-height: 1.6;
             overflow-x: hidden;
-            font-style: italic;
         }
 
         /* All bold elements target */
@@ -824,7 +823,7 @@
 
         @media (max-width: 768px) {
             /* --- NAV & HAMBURGER --- */
-            .logo { display: none !important; }
+            .logo { font-size: 1.1rem; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
             .header-content {
                 justify-content: space-between;
@@ -873,18 +872,23 @@
 
             /* --- HERO SECTION --- */
             .hero {
-                padding-top: 100px;
+                padding-top: 110px;
                 padding-bottom: 40px;
                 min-height: auto;
             }
             .hero-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-                align-items: flex-start;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .hero-text {
+                display: contents;
             }
             .hero-img-wrapper {
-                order: 1;
+                order: 3;
                 margin-top: 0;
+                width: 100%;
             }
             .hero-img {
                 max-width: 100%;
@@ -899,47 +903,51 @@
                 font-size: 0.7rem;
                 padding: 6px 12px;
             }
-            .hero-text {
-                text-align: left;
-            }
             .hero-text h1 {
-                font-size: 1.3rem;
-                margin-bottom: 0.75rem;
+                order: 1;
+                font-size: 2.2rem;
+                font-weight: 800;
+                margin-bottom: 0;
+                text-align: center;
+                width: 100%;
             }
             .hero-text .desc {
-                font-size: 0.8rem;
-                margin-bottom: 1rem;
+                order: 2;
+                font-size: 1rem;
+                margin-bottom: 0;
+                text-align: center;
             }
             .hero-buttons {
-                justify-content: flex-start;
+                order: 4;
+                justify-content: center;
                 flex-wrap: wrap;
-                gap: 0.5rem;
-                margin-bottom: 1rem;
+                gap: 0.75rem;
+                margin-bottom: 0;
                 flex-direction: column;
+                width: 100%;
             }
             .hero-buttons .btn {
                 width: 100%;
                 display: block;
                 text-align: center;
-                padding: 8px 16px;
-                font-size: 0.75rem;
+                padding: 14px 20px;
+                font-size: 1rem;
             }
             .mini-stats {
+                order: 5;
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: center;
                 align-items: center;
-                gap: 5px;
-                flex-wrap: nowrap;
+                gap: 10px;
+                flex-wrap: wrap;
                 width: 100%;
-                margin-top: 10px;
+                margin-top: 0;
             }
             .mini-stats > span {
-                font-size: 0.65rem;
+                font-size: 0.8rem;
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                gap: 4px;
-                text-align: center;
+                gap: 6px;
             }
             .mini-stats i { font-size: 1rem; }
 
@@ -950,8 +958,7 @@
             }
             .stat-card {
                 padding: 1.5rem 1rem;
-                transform: none !important;
-                border-radius: 12px !important;
+                border-radius: 12px;
             }
             .stat-icon { font-size: 2rem; }
             .stat-num { font-size: 2rem; }
@@ -1071,52 +1078,20 @@
             }
 
             /* --- MOCK TEST SECTION --- */
-            .mock-steps { display: none; }
-            .mock-steps-mobile {
-                display: block;
-                border: 2px solid var(--accent);
-                border-radius: 16px;
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
+            .mock-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
-            .mock-step-row {
-                display: flex;
-                gap: 1rem;
-                align-items: flex-start;
-                padding: 1rem 0;
-                border-bottom: 1px solid var(--card-border);
+            .mock-step {
+                padding: 2rem 1.5rem;
             }
-            .mock-step-row:last-child {
-                border-bottom: none;
-                padding-bottom: 0;
-            }
-            .mock-step-row .mock-icon {
-                font-size: 2rem;
-                margin-bottom: 0;
-            }
-            .mock-step-row h4 {
-                font-size: 0.9rem;
-                margin-bottom: 0.25rem;
-            }
-            .mock-step-row p {
-                font-size: 0.75rem;
-                color: var(--text-muted);
-                margin: 0;
-            }
+            .mock-icon { font-size: 2.5rem; }
+            .mock-step h4 { font-size: 1.1rem; }
             .mock-rules {
                 padding: 1.5rem 1rem;
             }
-            .mock-rules ul {
-                list-style: none;
-                padding-left: 0;
-            }
             .mock-rules ul li {
-                font-size: 0.85rem;
-            }
-            .mock-rules ul li::before {
-                content: '✓ ';
-                color: var(--accent);
-                font-weight: 700;
+                font-size: 0.9rem;
             }
 
             /* --- RESULTS SECTION --- */
@@ -1135,21 +1110,25 @@
             }
             .results-grid::-webkit-scrollbar { display: none; }
             .trophy-card {
-                position: static !important;
+                position: static;
                 width: 100%;
                 min-width: 100%;
                 flex-shrink: 0;
                 scroll-snap-align: center;
                 padding: 1.5rem;
-                transform: none !important;
-                opacity: 1 !important;
-                z-index: 1 !important;
-                box-shadow: none !important;
-                border-radius: 20px !important;
+                opacity: 1;
+                z-index: 1;
+                box-shadow: none;
+                border-radius: 20px;
             }
             .trophy-icon { font-size: 2.5rem; }
             .trophy-num { font-size: 1.8rem; }
             .trophy-text { font-size: 0.8rem; height: auto; }
+            .course-card,
+            .trophy-card {
+                overflow: hidden;
+                will-change: transform;
+            }
 
             /* --- SCHEDULE & MAP SECTION --- */
             .schedule-grid {
@@ -1176,22 +1155,22 @@
             /* --- CONTACT SECTION --- */
             .contact-grid {
                 display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 10px;
+                flex-direction: column;
+                gap: 1rem;
             }
             .contact-card {
-                flex: 1;
-                padding: 1rem 0.2rem;
+                width: 100%;
+                padding: 1.25rem 1.5rem;
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                aspect-ratio: 1;
-                border-radius: 10px;
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+                border-radius: 16px;
+                aspect-ratio: auto;
             }
-            .contact-card i { font-size: 1.5rem !important; }
-            .contact-card h4 { font-size: 0.75rem; margin: 4px 0; }
-            .contact-card p { font-size: 0.65rem; word-break: break-all; }
+            .contact-card i { font-size: 2rem; }
+            .contact-card h4 { font-size: 1.1rem; margin: 0; text-align: left; }
+            .contact-card p { font-size: 0.9rem; text-align: left; word-break: normal; }
 
             /* --- FOOTER --- */
             .footer-content {
@@ -1207,8 +1186,10 @@
 
             /* --- BUTTON GLOBAL --- */
             .btn {
-                padding: 10px 20px;
-                font-size: 0.85rem;
+                padding: 14px 20px;
+                font-size: 1rem;
+                width: 100%;
+                text-align: center;
             }
 
             /* --- MODAL --- */
@@ -1259,11 +1240,11 @@
             .schedule-card.touch-active,
             .mock-rules.touch-active,
             .contact-card.touch-active {
-                transform: scale(1.02) translateY(-2px) !important;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
-                transition: all 0.15s ease !important;
-                border-radius: 20px !important;
-                overflow: hidden !important;
+                transform: scale(0.97);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                transition: all 0.15s ease;
+                overflow: hidden;
+                will-change: transform;
             }
             .cert-card.touch-active h4,
             .cert-card.touch-active p { color: #FFFFFF !important; }
@@ -1313,59 +1294,26 @@
         [data-theme="dark"] .mock-rules.text-brown-rules ul li { color: #D4C3B3 !important; }
         .icon-plus { color: #FF6B00; font-weight: bold; }
 
-        .stat-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .stat-card:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: rgba(255, 107, 0, 0.15) !important; }
+        .stat-card { border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .cert-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .cert-card:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
-        .cert-card:hover h4, .cert-card:hover p { color: #FFFFFF !important; }
+        .cert-card { border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .course-grammar { border: 2px solid #3B82F6 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .course-grammar:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4) !important; background: #3B82F6 !important; }
-        .course-grammar:hover h3, .course-grammar:hover .course-icon, .course-grammar:hover .course-price, 
-        .course-grammar:hover .course-details, .course-grammar:hover .course-details li, .course-grammar:hover .course-details span { color: #FFFFFF !important; }
-        .course-grammar:hover .btn-blue { background: #FFFFFF !important; color: #3B82F6 !important; }
-        .course-kids { border: 2px solid #22C55E !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .course-kids:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4) !important; background: #22C55E !important; }
-        .course-kids:hover h3, .course-kids:hover .course-icon, .course-kids:hover .course-price, 
-        .course-kids:hover .course-details, .course-kids:hover .course-details li, .course-kids:hover .course-details span { color: #FFFFFF !important; }
-        .course-kids:hover .btn-green { background: #FFFFFF !important; color: #22C55E !important; }
+        .course-grammar { border: 2px solid #3B82F6; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-kids { border: 2px solid #22C55E; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .course-kids h3 { color: #22C55E; font-size: 2rem; }
         .course-kids .course-icon { font-size: 3rem; margin-bottom: 1rem; }
         .btn-green { background: #22C55E; color: white; width: 100%; margin-top: auto; }
-        .btn-green:hover { background: #16a34a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(34,197,94,0.3); }
 
-        .course-cefr { border: 2px solid #FF6B00 !important; background: var(--card-bg) !important; animation: none !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .course-cefr:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
-        .course-cefr:hover h3, .course-cefr:hover .course-icon, .course-cefr:hover .course-price, 
-        .course-cefr:hover .course-details, .course-cefr:hover .course-details li, .course-cefr:hover .course-details span { color: #FFFFFF !important; }
-        .course-cefr:hover .btn-primary { background: #FFFFFF !important; color: #FF6B00 !important; }
+        .course-cefr { border: 2px solid #FF6B00; background: var(--card-bg); animation: none; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .mock-step { background: rgba(255, 107, 0, 0.15) !important; border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .mock-step:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; }
+        .mock-step { background: rgba(255, 107, 0, 0.15); border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .mock-rules { background: rgba(255, 107, 0, 0.15); border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .mock-rules { background: rgba(255, 107, 0, 0.15) !important; border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .mock-rules:hover { transform: scale(1.03) translateY(-3px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; }
+        .trophy-orange { background: rgba(255, 107, 0, 0.1); border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .trophy-blue { background: rgba(59, 130, 246, 0.1); border: 2px solid #3B82F6; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .trophy-green { background: rgba(34, 197, 94, 0.1); border: 2px solid #22C55E; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .trophy-orange { background: rgba(255, 107, 0, 0.1) !important; border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .trophy-orange:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
-        .trophy-orange:hover .trophy-icon, .trophy-orange:hover .trophy-num, .trophy-orange:hover .trophy-text { color: #FFFFFF !important; }
-        .trophy-orange:hover .prog-bar { background: #FFFFFF !important; }
-
-        .trophy-blue { background: rgba(59, 130, 246, 0.1) !important; border: 2px solid #3B82F6 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .trophy-blue:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4) !important; background: #3B82F6 !important; }
-        .trophy-blue:hover .trophy-icon, .trophy-blue:hover .trophy-num, .trophy-blue:hover .trophy-text { color: #FFFFFF !important; }
-        .trophy-blue:hover .prog-bar { background: #FFFFFF !important; }
-
-        .trophy-green { background: rgba(34, 197, 94, 0.1) !important; border: 2px solid #22C55E !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .trophy-green:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4) !important; background: #22C55E !important; }
-        .trophy-green:hover .trophy-icon, .trophy-green:hover .trophy-num, .trophy-green:hover .trophy-text { color: #FFFFFF !important; }
-        .trophy-green:hover .prog-bar { background: #FFFFFF !important; }
-
-        .schedule-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .schedule-card:hover { transform: scale(1.03) translateY(-3px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: rgba(255, 107, 0, 0.15) !important; }
-        .schedule-card:hover .address-box { background: transparent !important; }
-        .schedule-card:hover .btn-outline { background-color: #FF6B00 !important; color: #FFFFFF !important; border-color: #FF6B00 !important; }
+        .schedule-card { border: 2px solid #FF6B00; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
         /* ABOUT IMG HOVER ANIMATION */
         .about-img { transition: var(--transition); animation: float-straight 4s ease-in-out infinite; }
@@ -1375,26 +1323,106 @@
             100% { transform: translateY(0); }
         }
 
-        .map-wrapper { border: 2px solid #FF6B00 !important; transition: var(--transition); position: relative; }
+        .map-wrapper { border: 2px solid #FF6B00; transition: var(--transition); position: relative; }
         .map-wrapper::after {
             content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
             background: rgba(255,107,0,0.1); opacity: 0; transition: var(--transition); pointer-events: none;
         }
-        .map-wrapper:hover { transform: scale(1.05) !important; border-color: #FF6B00 !important; }
-        .map-wrapper:hover::after { opacity: 1; }
 
-        .contact-card.telegram { background: rgba(0, 136, 204, 0.1) !important; border: 2px solid #0088CC !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .contact-card.telegram:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(0, 136, 204, 0.4) !important; background: #0088CC !important; }
-        .contact-card.telegram:hover i, .contact-card.telegram:hover h4, .contact-card.telegram:hover p { color: #FFFFFF !important; }
+        .contact-card.telegram { background: rgba(0, 136, 204, 0.1); border: 2px solid #0088CC; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .contact-card.instagram { background: rgba(225, 48, 108, 0.1); border: 2px solid #E1306C; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .contact-card.phone { background: rgba(37, 209, 102, 0.1); border: 2px solid #25D166; transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        .contact-card.instagram { background: rgba(225, 48, 108, 0.1) !important; border: 2px solid #E1306C !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .contact-card.instagram:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(225, 48, 108, 0.4) !important; background: linear-gradient(45deg, #E1306C, #833AB4) !important; }
-        .contact-card.instagram:hover i { background: none !important; -webkit-text-fill-color: #FFFFFF !important; color: #FFFFFF !important; }
-        .contact-card.instagram:hover h4, .contact-card.instagram:hover p { color: #FFFFFF !important; }
+        /* ===== DESKTOP HOVER EFFECTS — only for mouse/trackpad ===== */
+        @media (hover: hover) and (pointer: fine) {
+            .stat-card:hover { transform: scale(1.06) translateY(-6px); box-shadow: 0 18px 40px rgba(255, 107, 0, 0.35), 0 0 20px rgba(255, 107, 0, 0.15); background: rgba(255, 107, 0, 0.12); }
 
-        .contact-card.phone { background: rgba(37, 209, 102, 0.1) !important; border: 2px solid #25D166 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .contact-card.phone:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(37, 209, 102, 0.4) !important; background: #25D166 !important; }
-        .contact-card.phone:hover i, .contact-card.phone:hover h4, .contact-card.phone:hover p { color: #FFFFFF !important; }
+            .cert-card:hover { transform: scale(1.06) translateY(-6px); box-shadow: 0 18px 40px rgba(255, 107, 0, 0.35), 0 0 20px rgba(255, 107, 0, 0.15); background: #FF6B00; }
+            .cert-card:hover h4, .cert-card:hover p { color: #FFFFFF; }
+
+            .course-grammar:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 18px 40px rgba(59, 130, 246, 0.35), 0 0 20px rgba(59, 130, 246, 0.15); background: #3B82F6; }
+            .course-grammar:hover h3, .course-grammar:hover .course-icon, .course-grammar:hover .course-price, 
+            .course-grammar:hover .course-details, .course-grammar:hover .course-details li, .course-grammar:hover .course-details span { color: #FFFFFF; }
+            .course-grammar:hover .btn-blue { background: #FFFFFF; color: #3B82F6; }
+
+            .course-kids:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 18px 40px rgba(34, 197, 94, 0.35), 0 0 20px rgba(34, 197, 94, 0.15); background: #22C55E; }
+            .course-kids:hover h3, .course-kids:hover .course-icon, .course-kids:hover .course-price, 
+            .course-kids:hover .course-details, .course-kids:hover .course-details li, .course-kids:hover .course-details span { color: #FFFFFF; }
+            .course-kids:hover .btn-green { background: #FFFFFF; color: #22C55E; }
+
+            .course-cefr:hover { transform: scale(1.05) translateY(-6px); box-shadow: 0 18px 40px rgba(255, 107, 0, 0.35), 0 0 20px rgba(255, 107, 0, 0.15); background: #FF6B00; }
+            .course-cefr:hover h3, .course-cefr:hover .course-icon, .course-cefr:hover .course-price, 
+            .course-cefr:hover .course-details, .course-cefr:hover .course-details li, .course-cefr:hover .course-details span { color: #FFFFFF; }
+            .course-cefr:hover .btn-primary { background: #FFFFFF; color: #FF6B00; }
+
+            .mock-step:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 15px 35px rgba(255, 107, 0, 0.3); }
+            .mock-rules:hover { transform: scale(1.02) translateY(-3px); box-shadow: 0 15px 35px rgba(255, 107, 0, 0.3); }
+
+            .trophy-orange:hover { transform: scale(1.06) translateY(-6px); box-shadow: 0 18px 40px rgba(255, 107, 0, 0.4), 0 0 25px rgba(255, 107, 0, 0.2); background: #FF6B00; }
+            .trophy-orange:hover .trophy-icon, .trophy-orange:hover .trophy-num, .trophy-orange:hover .trophy-text { color: #FFFFFF; }
+            .trophy-orange:hover .prog-bar { background: #FFFFFF; }
+
+            .trophy-blue:hover { transform: scale(1.06) translateY(-6px); box-shadow: 0 18px 40px rgba(59, 130, 246, 0.4), 0 0 25px rgba(59, 130, 246, 0.2); background: #3B82F6; }
+            .trophy-blue:hover .trophy-icon, .trophy-blue:hover .trophy-num, .trophy-blue:hover .trophy-text { color: #FFFFFF; }
+            .trophy-blue:hover .prog-bar { background: #FFFFFF; }
+
+            .trophy-green:hover { transform: scale(1.06) translateY(-6px); box-shadow: 0 18px 40px rgba(34, 197, 94, 0.4), 0 0 25px rgba(34, 197, 94, 0.2); background: #22C55E; }
+            .trophy-green:hover .trophy-icon, .trophy-green:hover .trophy-num, .trophy-green:hover .trophy-text { color: #FFFFFF; }
+            .trophy-green:hover .prog-bar { background: #FFFFFF; }
+
+            .schedule-card:hover { transform: scale(1.03) translateY(-4px); box-shadow: 0 18px 40px rgba(255, 107, 0, 0.35); background: rgba(255, 107, 0, 0.12); }
+            .schedule-card:hover .address-box { background: transparent; }
+            .schedule-card:hover .btn-outline { background-color: #FF6B00; color: #FFFFFF; border-color: #FF6B00; }
+
+            .map-wrapper:hover { transform: scale(1.03); border-color: #FF6B00; }
+            .map-wrapper:hover::after { opacity: 1; }
+
+            .contact-card.telegram:hover { transform: scale(1.06) translateY(-8px); box-shadow: 0 20px 45px rgba(0, 136, 204, 0.4), 0 0 25px rgba(0, 136, 204, 0.2); background: #0088CC; }
+            .contact-card.telegram:hover i, .contact-card.telegram:hover h4, .contact-card.telegram:hover p { color: #FFFFFF; }
+
+            .contact-card.instagram:hover { transform: scale(1.06) translateY(-8px); box-shadow: 0 20px 45px rgba(225, 48, 108, 0.4), 0 0 25px rgba(225, 48, 108, 0.2); background: linear-gradient(45deg, #E1306C, #833AB4); }
+            .contact-card.instagram:hover i { background: none; -webkit-text-fill-color: #FFFFFF; color: #FFFFFF; }
+            .contact-card.instagram:hover h4, .contact-card.instagram:hover p { color: #FFFFFF; }
+
+            .contact-card.phone:hover { transform: scale(1.06) translateY(-8px); box-shadow: 0 20px 45px rgba(37, 209, 102, 0.4), 0 0 25px rgba(37, 209, 102, 0.2); background: #25D166; }
+            .contact-card.phone:hover i, .contact-card.phone:hover h4, .contact-card.phone:hover p { color: #FFFFFF; }
+
+            .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4); }
+            .btn-outline:hover { background-color: var(--accent); color: #FFFFFF; transform: translateY(-3px); }
+            .btn-blue:hover { background: #2563eb; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59,130,246,0.3); }
+            .btn-green:hover { background: #16a34a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(34,197,94,0.3); }
+
+            .trophy-card:hover .trophy-icon { animation: bounce 1s; }
+        }
+
+        /* ===== Prevent sticky hover on touch devices ===== */
+        @media (hover: none) {
+            .stat-card:hover,
+            .cert-card:hover,
+            .course-grammar:hover,
+            .course-cefr:hover,
+            .course-kids:hover,
+            .mock-step:hover,
+            .mock-rules:hover,
+            .trophy-orange:hover,
+            .trophy-blue:hover,
+            .trophy-green:hover,
+            .schedule-card:hover,
+            .contact-card:hover,
+            .map-wrapper:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+            .btn-primary:hover,
+            .btn-outline:hover,
+            .btn-blue:hover,
+            .btn-green:hover {
+                transform: none !important;
+            }
+            .trophy-card:hover .trophy-icon {
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -1569,30 +1597,6 @@
                 </div>
             </div>
 
-            <div class="mock-steps-mobile" style="display: none;">
-                <div class="mock-step-row">
-                    <div class="mock-icon">📝</div>
-                    <div>
-                        <h4 data-i18n="mock_s1_title">Har shanba mock test bo'lib o'tadi</h4>
-                        <p data-i18n="mock_s1_desc">Haqiqiy imtihon sharoitida test topshirasiz</p>
-                    </div>
-                </div>
-                <div class="mock-step-row">
-                    <div class="mock-icon">🎯</div>
-                    <div>
-                        <h4 data-i18n="mock_s2_title">55+ ball olasiz</h4>
-                        <p data-i18n="mock_s2_desc">Maqsadli ball — B2 sertifikatiga yo'l</p>
-                    </div>
-                </div>
-                <div class="mock-step-row">
-                    <div class="mock-icon">🎁</div>
-                    <div>
-                        <h4 data-i18n="mock_s3_title">Imtihon puli ustozdan</h4>
-                        <p data-i18n="mock_s3_desc">Registratsiya to'lovini teacher arakulov o'z zimmasiga oladi</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="mock-rules text-brown-rules" data-aos="fade-up">
                 <h3 data-i18n="rules_title" class="font-times">Qoida va Shartlar</h3>
                 <ul>
@@ -1695,19 +1699,19 @@
             <h2 class="section-title font-times" data-i18n="contact_title">Bog'lanish</h2>
             
             <div class="contact-grid">
-                <a href="https://t.me/Multilevel_instructor1" target="_blank" class="contact-card telegram" data-aos="flip-up">
+                <a href="https://t.me/Multilevel_instructor1" target="_blank" class="contact-card telegram" data-aos="fade-up">
                     <i class="fab fa-telegram-plane"></i>
                     <h4 class="font-times">Telegram</h4>
                     <p class="desc">@Multilevel_instructor1</p>
                 </a>
                 
-                <a href="https://instagram.com/teacher_arakulov" target="_blank" class="contact-card instagram" data-aos="flip-up" data-aos-delay="150">
+                <a href="https://instagram.com/teacher_arakulov" target="_blank" class="contact-card instagram" data-aos="fade-up" data-aos-delay="150">
                     <i class="fab fa-instagram"></i>
                     <h4 class="font-times">Instagram</h4>
                     <p class="desc">teacher_arakulov</p>
                 </a>
                 
-                <a href="tel:+998995282728" class="contact-card phone" data-aos="flip-up" data-aos-delay="300">
+                <a href="tel:+998995282728" class="contact-card phone" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-phone-alt"></i>
                     <h4 class="font-times">Telefon</h4>
                     <p class="desc">+998 99 528 27 28</p>
@@ -1778,13 +1782,22 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // AOS Init
-        AOS.init({ once: false, offset: 100, duration: 800 });
+        // AOS Init — mobile: soft fade-up only; desktop: full animations
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('[data-aos]').forEach(el => {
+                el.setAttribute('data-aos', 'fade-up');
+                el.removeAttribute('data-aos-delay');
+            });
+            AOS.init({ once: true, offset: 30, duration: 400, easing: 'ease-out' });
+        } else {
+            AOS.init({ once: false, offset: 100, duration: 800, mirror: true });
+        }
 
-        // AOS refresh on anchor click
+        // AOS refresh on anchor click (ensures animations replay when navigating)
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', () => {
                 setTimeout(() => { AOS.refresh(); }, 600);
+                setTimeout(() => { AOS.refresh(); }, 1200);
             });
         });
 
