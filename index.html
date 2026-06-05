@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta_title">Asadbek Arakulov - O'zbek tili va Ingliz tili o'qituvchisi</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #FFFAF5;
+            --bg-alt: #FFF3E8;
+            --card-bg: #FFFFFF;
+            --card-border: rgba(255,107,0,0.1);
+            --text-main: #5C4A3A;
+            --text-desc: #5C4A3A;
+            --accent: #FF6B00;
+            --accent-dark: #FF9A00;
+            --accent-blue: #3B82F6;
+            --gradient-text: linear-gradient(90deg, #FF6B00, #FF9A00);
+            --divider: transparent;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0A1628;
+            --bg-alt: #0F1F38;
+            --card-bg: #162236;
+            --card-border: rgba(255,107,0,0.15);
+            --text-main: #D4C3B3;
+            --text-desc: #D4C3B3;
+            --divider: linear-gradient(90deg, transparent, rgba(255,107,0,0.3), transparent);
+            --shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* WebKit Border-Radius Bug Fix for hardware accelerated transforms */
+        .course-card, .trophy-card, .stat-card, .mock-step, .cert-card, .schedule-card, .contact-card {
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            mask-image: radial-gradient(white, black);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+
+        html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-style: italic;
+        }
+
+        /* All bold elements target */
+        h1, h2, h3, h4, h5, h6, strong, b,
+        .btn, .logo, .nav-link, .mini-stats, .floating-badge,
+        .stat-num, .stat-text, .course-price, .trophy-num, .trophy-text,
+        .schedule-item, .contact-card p, .footer-logo, .theme-btn, .lang-btn,
+        [style*="font-weight: 600"], [style*="font-weight: 700"], [style*="font-weight: 800"] {
+            font-style: normal !important;
+        }
+
+        h1, h2 {
+            font-weight: 800;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        h3 {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        p.desc, span.desc, .italic-desc {
+            color: var(--text-desc);
+            font-style: italic;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: #FFFFFF;
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        
+        .section-divider {
+            height: 1px;
+            background: var(--divider);
+            margin: 0;
+            border: none;
+        }
+
+        .bg-alt { background-color: var(--bg-alt); }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background-color: rgba(var(--bg-main), 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        [data-theme="dark"] header {
+            background-color: rgba(10, 22, 40, 0.8);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .nav-link:hover { color: var(--accent); }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Toggles */
+        .toggle-pill {
+            display: flex;
+            background: transparent;
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            overflow: hidden;
+            padding: 2px;
+        }
+        .toggle-pill button {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .toggle-pill button.active {
+            background: var(--accent);
+            color: #FFFFFF;
+        }
+
+        .hamburger {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text .desc {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .mini-stats {
+            display: flex;
+            gap: 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+        .mini-stats span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .mini-stats i { color: var(--accent); }
+
+        .hero-img-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-circle {
+            position: absolute;
+            width: 350px; height: 350px;
+            background: var(--accent);
+            filter: blur(100px);
+            opacity: 0.4;
+            z-index: -1;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 20px;
+            transform: rotate(-3deg);
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.3);
+            animation: float 4s ease-in-out infinite;
+            object-fit: cover;
+            aspect-ratio: 4/5;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-15px) rotate(-3deg); }
+            100% { transform: translateY(0) rotate(-3deg); }
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: 30px; right: -10px;
+            background: #FFFFFF;
+            color: var(--accent);
+            padding: 12px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-weight: 800;
+            font-size: 1.1rem;
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        [data-theme="dark"] .floating-badge {
+            background: #162236;
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Glowing Stat Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 4px;
+            background: var(--gradient-text);
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+
+        .stat-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            padding: 15px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .about-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-list {
+            margin-bottom: 2.5rem;
+        }
+        .about-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .certs-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .cert-card {
+            background: #162236;
+        }
+
+        .cert-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .cert-card p {
+            font-size: 0.9rem;
+            color: var(--text-desc);
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Grammar Card */
+        .course-grammar {
+            border: 1px solid rgba(59,130,246,0.3);
+        }
+        .course-grammar:hover {
+            box-shadow: 0 0 30px rgba(59,130,246,0.15);
+            transform: translateY(-5px);
+        }
+        .course-grammar h3 { color: var(--accent-blue); font-size: 2rem; }
+        .course-grammar .course-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .btn-blue {
+            background: var(--accent-blue);
+            color: white;
+            width: 100%;
+            margin-top: auto;
+        }
+        .btn-blue:hover { background: #2563eb; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59,130,246,0.3); }
+
+        /* CEFR Card */
+        @keyframes shimmerBorder {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .course-cefr {
+            border: 2px solid transparent;
+            background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box, 
+                        linear-gradient(90deg, #FF6B00, transparent, #FF9A00, transparent, #FF6B00) border-box;
+            background-size: 200% 200%;
+            animation: shimmerBorder 3s linear infinite;
+        }
+        .course-cefr:hover {
+            box-shadow: 0 0 30px rgba(255,107,0,0.2);
+            transform: translateY(-5px);
+        }
+        .course-cefr h3 { color: var(--accent); font-size: 2rem; }
+        .course-cefr .course-icon { font-size: 3rem; margin-bottom: 1rem; }
+        
+        .popular-badge {
+            position: absolute;
+            top: 20px; right: -35px;
+            background: var(--gradient-text);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(255,107,0,0.3);
+        }
+
+        .course-price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+
+        .course-details {
+            margin-bottom: 2rem;
+        }
+        .course-details li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .course-details li.italic-desc {
+            align-items: flex-start;
+        }
+
+        .course-cefr .btn-primary { width: 100%; margin-top: auto; }
+
+        /* Mock Test Section */
+        .mock-test {
+            text-align: center;
+        }
+        .mock-desc {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .mock-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .mock-step {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .mock-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mock-step h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .mock-rules {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: left;
+        }
+
+        .mock-rules h3 { margin-bottom: 1.5rem; text-align: center; }
+        .mock-rules ul li {
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: flex;
+            gap: 10px;
+        }
+        .mock-rules ul li::before { content: '•'; color: var(--accent); font-weight: bold; }
+
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .trophy-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .trophy-orange:hover { box-shadow: 0 0 30px rgba(255,107,0,0.2); border-color: rgba(255,107,0,0.3); }
+        .trophy-blue:hover { box-shadow: 0 0 30px rgba(59,130,246,0.2); border-color: rgba(59,130,246,0.3); }
+        .trophy-green:hover { box-shadow: 0 0 30px rgba(37,211,102,0.2); border-color: rgba(37,211,102,0.3); }
+
+        .trophy-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .trophy-card:hover .trophy-icon { animation: bounce 1s; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        .trophy-num {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .trophy-text {
+            font-weight: 600;
+            margin-bottom: 2rem;
+            height: 48px;
+        }
+
+        .prog-bar-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        [data-theme="dark"] .prog-bar-container { background: rgba(255,255,255,0.05); }
+
+        .prog-bar {
+            height: 100%;
+            width: 0;
+            border-radius: 6px;
+            transition: width 1.5s ease-in-out;
+        }
+        .prog-orange { background: linear-gradient(90deg, #FF6B00, #FF9A00); }
+        .prog-blue { background: linear-gradient(90deg, #3B82F6, #60A5FA); }
+        .prog-green { background: linear-gradient(90deg, #25D166, #4ADE80); }
+
+        /* Schedule & Map */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .schedule-card {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--card-border);
+            font-weight: 600;
+        }
+        .schedule-item:last-child { border-bottom: none; }
+        .schedule-item i { color: var(--accent); margin-right: 8px; }
+
+        .address-box {
+            margin-top: 2rem;
+            background: var(--bg-alt);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            gap: 15px;
+        }
+        .address-box i { color: var(--accent); font-size: 1.5rem; }
+
+        .map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            height: 100%;
+            min-height: 400px;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-card.telegram { border-color: rgba(0,136,204,0.3); }
+        .contact-card.telegram:hover { box-shadow: 0 0 25px rgba(0,136,204,0.2); transform: scale(1.03); }
+        .contact-card.telegram i { color: #0088CC; font-size: 3rem; }
+
+        .contact-card.instagram { border-color: rgba(225,48,108,0.3); }
+        .contact-card.instagram:hover { box-shadow: 0 0 25px rgba(225,48,108,0.2); transform: scale(1.03); }
+        .contact-card.instagram i { 
+            font-size: 3rem;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .contact-card.phone { border-color: rgba(37,211,102,0.3); }
+        .contact-card.phone:hover { box-shadow: 0 0 25px rgba(37,211,102,0.2); transform: scale(1.03); }
+        .contact-card.phone i { color: #25D166; font-size: 3rem; }
+
+        .contact-card h4 { font-size: 1.5rem; }
+        .contact-card p { font-weight: 600; font-size: 1.1rem; }
+
+        /* Footer */
+        footer {
+            background-color: #0A1931;
+            color: #FFFFFF;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            transition: 0.3s;
+        }
+        .footer-social a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            text-align: center;
+        }
+        .footer-bottom .desc {
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .hero-content, .about-grid, .courses-grid, .schedule-grid { grid-template-columns: 1fr; }
+            .hero-text { text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .mini-stats { justify-content: center; }
+            .hero-img-wrapper { margin-top: 3rem; }
+            .stats-grid, .results-grid, .mock-steps, .contact-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { flex-direction: column; gap: 2rem; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            /* --- NAV & HAMBURGER --- */
+            .logo { display: none !important; }
+
+            .header-content {
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                position: fixed; top: 90px; left: -100%;
+                width: 100%; height: calc(100vh - 90px);
+                background: var(--bg-main);
+                flex-direction: column; justify-content: center;
+                transition: var(--transition);
+            }
+            .nav-links.active { left: 0; }
+            .hamburger { display: block; }
+
+            /* Mobile actions */
+            #desktopActions { display: none !important; }
+            #mobileActions {
+                display: flex !important;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                flex: none;
+                margin-right: auto;
+                gap: 15px;
+                position: static;
+                background: transparent;
+                box-shadow: none;
+                padding: 10px 0 0 0;
+                transform: none;
+                width: auto;
+            }
+            #mobileActions .toggle-pill {
+                padding: 1px;
+            }
+            #mobileActions .toggle-pill button {
+                padding: 4px 8px;
+                font-size: 0.65rem;
+            }
+            #themeToggleMobile { display: flex !important; }
+
+            /* --- GLOBAL MOBILE SPACING --- */
+            .container { padding: 0 16px; }
+            .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
+            .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+
+            /* --- HERO SECTION --- */
+            .hero {
+                padding-top: 100px;
+                padding-bottom: 40px;
+                min-height: auto;
+            }
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            .hero-img-wrapper {
+                order: 1;
+                margin-top: 0;
+            }
+            .hero-img {
+                max-width: 100%;
+                width: 100%;
+                border-radius: 16px;
+            }
+            .hero-circle {
+                width: 150px; height: 150px;
+            }
+            .floating-badge {
+                bottom: 10px; right: -5px;
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
+            .hero-text {
+                text-align: left;
+            }
+            .hero-text h1 {
+                font-size: 1.3rem;
+                margin-bottom: 0.75rem;
+            }
+            .hero-text .desc {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+            .hero-buttons {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+                flex-direction: column;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                display: block;
+                text-align: center;
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
+            .mini-stats {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+                flex-wrap: nowrap;
+                width: 100%;
+                margin-top: 10px;
+            }
+            .mini-stats > span {
+                font-size: 0.65rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+                text-align: center;
+            }
+            .mini-stats i { font-size: 1rem; }
+
+            /* --- STATS SECTION --- */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .stat-card {
+                padding: 1.5rem 1rem;
+                transform: none !important;
+                border-radius: 12px !important;
+            }
+            .stat-icon { font-size: 2rem; }
+            .stat-num { font-size: 2rem; }
+            .stat-text { font-size: 0.9rem; }
+
+            /* --- ABOUT SECTION --- */
+            .about-grid {
+                display: grid;
+                grid-template-columns: 100px 1fr;
+                grid-template-areas:
+                    "image title"
+                    "desc desc"
+                    "list list"
+                    "cert-title cert-title"
+                    "certs certs";
+                gap: 15px;
+                align-items: center;
+            }
+            .about-grid > div {
+                display: contents;
+            }
+            .about-img {
+                grid-area: image;
+                width: 100px !important;
+                height: 100px !important;
+                border-radius: 50% !important;
+                object-fit: cover !important;
+                margin: 0 !important;
+                border: 3px solid var(--accent) !important;
+            }
+            .about-grid h2 {
+                grid-area: title;
+                font-size: 1.3rem !important;
+                margin-bottom: 0 !important;
+                line-height: 1.3;
+                text-align: left;
+            }
+            .about-desc { 
+                grid-area: desc;
+                font-size: 0.85rem; margin-top: 0; line-height: 1.4; text-align: left;
+            }
+            .about-list { 
+                grid-area: list;
+                display: block;
+                margin-bottom: 10px;
+            }
+            .about-list li {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
+            }
+            .about-grid h3 {
+                grid-area: cert-title;
+                font-size: 1.1rem;
+                margin-top: 5px;
+                text-align: left;
+            }
+            .certs-grid {
+                grid-area: certs;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .certs-title { font-size: 1.2rem; margin-top: 1.5rem; }
+            .cert-card { padding: 0.75rem; }
+            .cert-card h4 { font-size: 0.9rem; }
+            .cert-card p { font-size: 0.75rem; }
+
+            /* --- COURSES SECTION --- */
+            .courses-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: visible;
+                scroll-snap-type: x mandatory;
+                width: 100%;
+                scroll-behavior: smooth;
+                gap: 20px;
+                padding: 15px 0;
+            }
+            .courses-grid::-webkit-scrollbar { display: none; }
+            .course-card {
+                min-width: 100%;
+                flex-shrink: 0;
+                padding: 1.5rem;
+                scroll-snap-align: center;
+                border-radius: 20px !important;
+                overflow: hidden !important;
+            }
+            .carousel-controls {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 5px;
+            }
+            .carousel-btn {
+                background: linear-gradient(135deg, var(--accent), #ff5100);
+                color: #fff;
+                border: none;
+                width: 48px; height: 48px;
+                border-radius: 50%;
+                display: flex; justify-content: center; align-items: center;
+                font-size: 1.2rem;
+                box-shadow: 0 4px 15px rgba(255,107,0,0.4);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .carousel-btn:active {
+                transform: scale(0.9);
+                box-shadow: 0 2px 8px rgba(255,107,0,0.3);
+            }
+            .course-card h3 { font-size: 1.2rem !important; }
+            .course-price { font-size: 1.4rem; }
+            .course-details li { font-size: 0.85rem; margin-bottom: 0.5rem; }
+            .popular-badge {
+                top: 20px; right: -30px;
+                font-size: 0.6rem;
+                padding: 4px 28px;
+            }
+
+            /* --- MOCK TEST SECTION --- */
+            .mock-steps { display: none; }
+            .mock-steps-mobile {
+                display: block;
+                border: 2px solid var(--accent);
+                border-radius: 16px;
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .mock-step-row {
+                display: flex;
+                gap: 1rem;
+                align-items: flex-start;
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--card-border);
+            }
+            .mock-step-row:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .mock-step-row .mock-icon {
+                font-size: 2rem;
+                margin-bottom: 0;
+            }
+            .mock-step-row h4 {
+                font-size: 0.9rem;
+                margin-bottom: 0.25rem;
+            }
+            .mock-step-row p {
+                font-size: 0.75rem;
+                color: var(--text-muted);
+                margin: 0;
+            }
+            .mock-rules {
+                padding: 1.5rem 1rem;
+            }
+            .mock-rules ul {
+                list-style: none;
+                padding-left: 0;
+            }
+            .mock-rules ul li {
+                font-size: 0.85rem;
+            }
+            .mock-rules ul li::before {
+                content: '✓ ';
+                color: var(--accent);
+                font-weight: 700;
+            }
+
+            /* --- RESULTS SECTION --- */
+            .results-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: visible;
+                scroll-snap-type: x mandatory;
+                width: 100%;
+                scroll-behavior: smooth;
+                gap: 15px;
+                padding: 15px 5px;
+                height: auto;
+                align-items: stretch;
+            }
+            .results-grid::-webkit-scrollbar { display: none; }
+            .trophy-card {
+                position: static !important;
+                width: 100%;
+                min-width: 100%;
+                flex-shrink: 0;
+                scroll-snap-align: center;
+                padding: 1.5rem;
+                transform: none !important;
+                opacity: 1 !important;
+                z-index: 1 !important;
+                box-shadow: none !important;
+                border-radius: 20px !important;
+            }
+            .trophy-icon { font-size: 2.5rem; }
+            .trophy-num { font-size: 1.8rem; }
+            .trophy-text { font-size: 0.8rem; height: auto; }
+
+            /* --- SCHEDULE & MAP SECTION --- */
+            .schedule-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .schedule-card {
+                padding: 1.5rem;
+                width: 100%;
+            }
+            .schedule-item {
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 4px;
+                padding: 0.75rem 0;
+                font-size: 0.85rem;
+            }
+            .map-wrapper {
+                min-height: 250px;
+                height: 250px;
+                width: 100%;
+            }
+
+            /* --- CONTACT SECTION --- */
+            .contact-grid {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 10px;
+            }
+            .contact-card {
+                flex: 1;
+                padding: 1rem 0.2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                aspect-ratio: 1;
+                border-radius: 10px;
+            }
+            .contact-card i { font-size: 1.5rem !important; }
+            .contact-card h4 { font-size: 0.75rem; margin: 4px 0; }
+            .contact-card p { font-size: 0.65rem; word-break: break-all; }
+
+            /* --- FOOTER --- */
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            /* --- BUTTON GLOBAL --- */
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            /* --- MODAL --- */
+            .modal-box {
+                position: absolute !important;
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 90vw !important;
+                max-width: 400px !important;
+                max-height: 80vh !important;
+                overflow-y: auto !important;
+                padding: 20px 15px !important;
+                border-radius: 16px !important;
+                margin: 0 !important;
+                box-sizing: border-box !important;
+            }
+            .modal-box h3 {
+                font-size: 1.25rem !important;
+                margin-bottom: 5px !important;
+            }
+            .modal-box p {
+                font-size: 0.8rem !important;
+                margin-bottom: 15px !important;
+            }
+            .modal-box form > div {
+                margin-bottom: 10px !important;
+            }
+            .modal-box label {
+                font-size: 0.85rem !important;
+                margin-bottom: 4px !important;
+            }
+            .modal-box input, .modal-box select, .modal-box button {
+                padding: 10px 12px !important;
+                font-size: 0.9rem !important;
+                box-sizing: border-box !important;
+                width: 100% !important;
+            }
+
+            /* --- TOUCH ACTIVE ANIMATIONS (Pure CSS) --- */
+            .stat-card:active,
+            .cert-card:active,
+            .schedule-card:active,
+            .mock-rules:active,
+            .contact-card:active,
+            .mock-step:active {
+                transform: scale(0.97) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            }
+            .course-grammar:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .course-cefr:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .course-kids:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .trophy-orange:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .trophy-blue:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            .trophy-green:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+        }
+
+        .fade-transition {
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .fade-out { opacity: 0; }
+
+        /* --- CUSTOM REQUIREMENTS --- */
+        .font-times { font-family: "Plus Jakarta Sans", sans-serif !important; }
+        .text-brown { color: #5C4A3A !important; }
+        [data-theme="dark"] .text-brown { color: #D4C3B3 !important; }
+        .mock-rules.text-brown-rules ul li { color: #5C4A3A !important; }
+        [data-theme="dark"] .mock-rules.text-brown-rules ul li { color: #D4C3B3 !important; }
+        .icon-plus { color: #FF6B00; font-weight: bold; }
+
+        .stat-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .stat-card:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: rgba(255, 107, 0, 0.15) !important; }
+
+        .cert-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .cert-card:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
+        .cert-card:hover h4, .cert-card:hover p { color: #FFFFFF !important; }
+
+        .course-grammar { border: 2px solid #3B82F6 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-grammar:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4) !important; background: #3B82F6 !important; }
+        .course-grammar:hover h3, .course-grammar:hover .course-icon, .course-grammar:hover .course-price, 
+        .course-grammar:hover .course-details, .course-grammar:hover .course-details li, .course-grammar:hover .course-details span { color: #FFFFFF !important; }
+        .course-grammar:hover .btn-blue { background: #FFFFFF !important; color: #3B82F6 !important; }
+        .course-kids { border: 2px solid #22C55E !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-kids:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4) !important; background: #22C55E !important; }
+        .course-kids:hover h3, .course-kids:hover .course-icon, .course-kids:hover .course-price, 
+        .course-kids:hover .course-details, .course-kids:hover .course-details li, .course-kids:hover .course-details span { color: #FFFFFF !important; }
+        .course-kids:hover .btn-green { background: #FFFFFF !important; color: #22C55E !important; }
+        .course-kids h3 { color: #22C55E; font-size: 2rem; }
+        .course-kids .course-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .btn-green { background: #22C55E; color: white; width: 100%; margin-top: auto; }
+        .btn-green:hover { background: #16a34a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(34,197,94,0.3); }
+
+        .course-cefr { border: 2px solid #FF6B00 !important; background: var(--card-bg) !important; animation: none !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-cefr:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
+        .course-cefr:hover h3, .course-cefr:hover .course-icon, .course-cefr:hover .course-price, 
+        .course-cefr:hover .course-details, .course-cefr:hover .course-details li, .course-cefr:hover .course-details span { color: #FFFFFF !important; }
+        .course-cefr:hover .btn-primary { background: #FFFFFF !important; color: #FF6B00 !important; }
+
+        .mock-step { background: rgba(255, 107, 0, 0.15) !important; border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .mock-step:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; }
+
+        .mock-rules { background: rgba(255, 107, 0, 0.15) !important; border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .mock-rules:hover { transform: scale(1.03) translateY(-3px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; }
+
+        .trophy-orange { background: rgba(255, 107, 0, 0.1) !important; border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .trophy-orange:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
+        .trophy-orange:hover .trophy-icon, .trophy-orange:hover .trophy-num, .trophy-orange:hover .trophy-text { color: #FFFFFF !important; }
+        .trophy-orange:hover .prog-bar { background: #FFFFFF !important; }
+
+        .trophy-blue { background: rgba(59, 130, 246, 0.1) !important; border: 2px solid #3B82F6 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .trophy-blue:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4) !important; background: #3B82F6 !important; }
+        .trophy-blue:hover .trophy-icon, .trophy-blue:hover .trophy-num, .trophy-blue:hover .trophy-text { color: #FFFFFF !important; }
+        .trophy-blue:hover .prog-bar { background: #FFFFFF !important; }
+
+        .trophy-green { background: rgba(34, 197, 94, 0.1) !important; border: 2px solid #22C55E !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .trophy-green:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4) !important; background: #22C55E !important; }
+        .trophy-green:hover .trophy-icon, .trophy-green:hover .trophy-num, .trophy-green:hover .trophy-text { color: #FFFFFF !important; }
+        .trophy-green:hover .prog-bar { background: #FFFFFF !important; }
+
+        .schedule-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .schedule-card:hover { transform: scale(1.03) translateY(-3px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: rgba(255, 107, 0, 0.15) !important; }
+        .schedule-card:hover .address-box { background: transparent !important; }
+        .schedule-card:hover .btn-outline { background-color: #FF6B00 !important; color: #FFFFFF !important; border-color: #FF6B00 !important; }
+
+        /* ABOUT IMG HOVER ANIMATION */
+        .about-img { transition: var(--transition); animation: float-straight 4s ease-in-out infinite; }
+        @keyframes float-straight {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        .map-wrapper { border: 2px solid #FF6B00 !important; transition: var(--transition); position: relative; }
+        .map-wrapper::after {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            background: rgba(255,107,0,0.1); opacity: 0; transition: var(--transition); pointer-events: none;
+        }
+        .map-wrapper:hover { transform: scale(1.05) !important; border-color: #FF6B00 !important; }
+        .map-wrapper:hover::after { opacity: 1; }
+
+        .contact-card.telegram { background: rgba(0, 136, 204, 0.1) !important; border: 2px solid #0088CC !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .contact-card.telegram:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(0, 136, 204, 0.4) !important; background: #0088CC !important; }
+        .contact-card.telegram:hover i, .contact-card.telegram:hover h4, .contact-card.telegram:hover p { color: #FFFFFF !important; }
+
+        .contact-card.instagram { background: rgba(225, 48, 108, 0.1) !important; border: 2px solid #E1306C !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .contact-card.instagram:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(225, 48, 108, 0.4) !important; background: linear-gradient(45deg, #E1306C, #833AB4) !important; }
+        .contact-card.instagram:hover i { background: none !important; -webkit-text-fill-color: #FFFFFF !important; color: #FFFFFF !important; }
+        .contact-card.instagram:hover h4, .contact-card.instagram:hover p { color: #FFFFFF !important; }
+
+        .contact-card.phone { background: rgba(37, 209, 102, 0.1) !important; border: 2px solid #25D166 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .contact-card.phone:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(37, 209, 102, 0.4) !important; background: #25D166 !important; }
+        .contact-card.phone:hover i, .contact-card.phone:hover h4, .contact-card.phone:hover p { color: #FFFFFF !important; }
+    
+        /* --- SVG MOTIFS FOR MOCK CARDS --- */
+        .motif-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; opacity: 0.15; pointer-events: none; z-index: 0; }
+        .motif-svg { width: 100%; height: 100%; object-fit: cover; }
+        .mock-content.relative { position: relative; z-index: 1; }
+        .ring-1 { animation: spin 15s linear infinite; transform-origin: 50% 50%; }
+        .ring-2 { animation: spin-reverse 20s linear infinite; transform-origin: 50% 50%; }
+        .ring-3 { animation: spin 10s linear infinite; transform-origin: 50% 50%; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+        .scanner-line { animation: scan 3s ease-in-out infinite alternate; }
+        @keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(280px); } }
+        .pulse-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s linear infinite; }
+        @keyframes dash { 0% { stroke-dashoffset: 1000; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1000; } }
+
+        /* --- TOUCH ACTIVE CLASS (JavaScript controlled) --- */
+        .touch-active {
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.2) !important;
+            transition: all 0.3s ease !important;
+        }
+        .contact-card.telegram.touch-active {
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 30px rgba(0, 136, 204, 0.3) !important;
+        }
+        .contact-card.instagram.touch-active {
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 30px rgba(225, 48, 108, 0.3) !important;
+        }
+        .contact-card.phone.touch-active {
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 30px rgba(37, 209, 102, 0.3) !important;
+        }
+        .trophy-orange.touch-active { box-shadow: 0 0 30px rgba(255, 107, 0, 0.3) !important; }
+        .trophy-blue.touch-active { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3) !important; }
+        .trophy-green.touch-active { box-shadow: 0 0 30px rgba(37, 209, 102, 0.3) !important; }
+</style>
+</head>
+<body data-theme="light">
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Asadbek Arakulov</a>
+            
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link" data-i18n="nav_about">Biz haqimizda</a></li>
+                <li><a href="#courses" class="nav-link" data-i18n="nav_courses">Kurslar</a></li>
+                <li><a href="#mocktest" class="nav-link" data-i18n="nav_mock">Mock Test</a></li>
+                <li><a href="#results" class="nav-link" data-i18n="nav_results">Natijalar</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Aloqa</a></li>
+            </ul>
+
+            <div class="header-actions" id="desktopActions">
+                <div class="toggle-pill lang-selector">
+                    <button class="lang-btn active" data-lang="uz">UZB</button>
+                    <button class="lang-btn" data-lang="ru">RUS</button>
+                    <button class="lang-btn" data-lang="en">ENG</button>
+                </div>
+                <div class="toggle-pill theme-toggle" id="themeToggleDesktop">
+                    <button class="theme-btn active" data-mode="light">☀️ Light</button>
+                    <button class="theme-btn" data-mode="dark">🌙 Dark</button>
+                </div>
+            </div>
+
+            <div class="header-actions" id="mobileActions" style="display: none;">
+                <div class="toggle-pill lang-selector">
+                    <button class="lang-btn active" data-lang="uz">UZB</button>
+                    <button class="lang-btn" data-lang="ru">RUS</button>
+                    <button class="lang-btn" data-lang="en">ENG</button>
+                </div>
+                <div class="toggle-pill theme-toggle" id="themeToggleMobile">
+                    <button class="theme-btn active" data-mode="light">☀️</button>
+                    <button class="theme-btn" data-mode="dark">🌙</button>
+                </div>
+            </div>
+
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero fade-transition" id="home">
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-up">
+                <h1 data-i18n="hero_title" class="font-times">Ingliz tilini professional darajada o'rganing</h1>
+                <p class="desc text-brown" data-i18n="hero_desc">6 yillik tajriba, 70+ B2 sertifikatli o'quvchilar, amaliy va natijaga yo'naltirilgan ta'lim.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary" data-i18n="btn_enroll">Darsga yozilish</a>
+                    <a href="#about" class="btn btn-outline" data-i18n="btn_more">Batafsil ma'lumot</a>
+                </div>
+
+                <div class="mini-stats">
+                    <span><i class="fas fa-users"></i> <span data-i18n="hero_stat1">500+ O'quvchi</span></span> |
+                    <span><i class="fas fa-certificate"></i> <span data-i18n="hero_stat2">70+ B2</span></span> |
+                    <span><i class="fab fa-instagram"></i> <span data-i18n="hero_stat3">15K+ Instagram</span></span>
+                </div>
+            </div>
+
+            <div class="hero-img-wrapper" data-aos="fade-up">
+                <div class="hero-circle"></div>
+                <img src="photo_2026-05-18_09-57-31.jpg" alt="Ustoz" class="hero-img">
+                <div class="floating-badge">
+                    ✦ C1 Certified
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-alt fade-transition" data-aos="fade-up">
+        <div class="container stats-grid" id="statsSection">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-num counter" data-target="6">0</div>
+                <div class="stat-text" data-i18n="stats_exp">Yil tajriba</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-icon">👨‍🎓</div>
+                <div class="stat-num counter" data-target="500">0</div>
+                <div class="stat-text" data-i18n="stats_students">O'quvchilar</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-num counter" data-target="70">0</div>
+                <div class="stat-text" data-i18n="stats_certs">B2 Sertifikat</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-icon">📱</div>
+                <div class="stat-num counter" data-target="15000">0</div>
+                <div class="stat-text" data-i18n="stats_insta">Instagram obunachi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 fade-transition" id="about">
+        <div class="container about-grid">
+            <div data-aos="fade-right">
+                <img src="photo_2026-05-18_09-57-31.jpg" alt="Ustoz" class="about-img">
+            </div>
+            <div data-aos="fade-left">
+                <h2 data-i18n="about_title" style="font-size: 2.5rem; margin-bottom: 1.5rem;">Asadbek Arakulov haqida</h2>
+                <p class="desc about-desc text-brown" data-i18n="about_full_desc">6 yillik tajriba davomida 500+ o'quvchiga ingliz tilini o'rgatib kelmoqdaman. Darslarim faqat nazariy emas — har bir dars amaliyotga asoslangan. Har shanba CEFR mock test o'tkazaman. Mock testdan 55+ ball olgan o'quvchilarga imtihon registratsiya pulini o'zim to'layman. Instagramda 15K+ obunachi bilan faol muloqotda bo'laman.</p>
+                
+                <ul class="about-list">
+                    <li><span class="icon-plus">✦</span> <span data-i18n="about_li1">Tajriba: 6 yil+</span></li>
+                    <li><span class="icon-plus">✦</span> <span data-i18n="about_li2">Amaliy va natijaga yo'naltirilgan darslar</span></li>
+                    <li><span class="icon-plus">✦</span> <span data-i18n="about_li3">Har shanba bepul Mock Test</span></li>
+                    <li><span class="icon-plus">✦</span> <span data-i18n="about_li4">55+ ball → imtihon puli ustozdan</span></li>
+                    <li><span class="icon-plus">✦</span> <span data-i18n="about_li5">Instagram: 15K+ obunachi, pulli o'yinlar</span></li>
+                </ul>
+
+                <h3 class="certs-title" data-i18n="certs_title">Ustoz Sertifikatlari va Yutuqlari</h3>
+                <div class="certs-grid">
+                    <div class="cert-card">
+                        <h4>🏅 CEFR C1</h4>
+                        <p data-i18n="cert_c1">Ingliz tilida yuqori malaka darajasi</p>
+                    </div>
+                    <div class="cert-card">
+                        <h4>🏅 APTIS</h4>
+                        <p data-i18n="cert_aptis">British Council tomonidan berilgan xalqaro sertifikat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <hr class="section-divider">
+    <section class="py-20 bg-alt fade-transition" id="courses">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="courses_title">Bizning Kurslar</h2>
+            
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Courses will be loaded here dynamically from Supabase -->
+                <p style="text-align: center; width: 100%; padding: 40px; color: var(--text-muted);">Kurslar yuklanmoqda...</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Mock Test Section -->
+    <hr class="section-divider">
+    <section class="py-20 fade-transition" id="mocktest">
+        <div class="container mock-test">
+            <h2 class="section-title font-times" data-aos="fade-up" data-i18n="mock_title">Noyob Mock Test Tizimi</h2>
+            <p class="desc mock-desc" data-aos="fade-up" data-i18n="mock_desc">O'zbekistonda birinchi marta — mock testdan o'tgan o'quvchilarga imtihon registratsiya pulini ustoz to'laydi!</p>
+            
+            <div class="mock-steps">
+                <div class="mock-step" data-aos="fade-up">
+                    <div class="mock-icon">📝</div>
+                    <h4 data-i18n="mock_s1_title">Har shanba CEFR mock test</h4>
+                    <span class="desc text-brown" data-i18n="mock_s1_desc">Haqiqiy imtihon sharoitida test topshirasiz</span>
+                </div>
+                <div class="mock-step" data-aos="fade-up" data-aos-delay="150">
+                    <div class="mock-icon">🎯</div>
+                    <h4 data-i18n="mock_s2_title">55+ ball olasiz</h4>
+                    <span class="desc text-brown" data-i18n="mock_s2_desc">Maqsadli ball — B2 sertifikatiga yo'l</span>
+                </div>
+                <div class="mock-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mock-icon">🎁</div>
+                    <h4 data-i18n="mock_s3_title">Imtihon puli ustozdan</h4>
+                    <span class="desc text-brown" data-i18n="mock_s3_desc">Registratsiya to'lovini ustoz Asadbek o'z zimmasiga oladi</span>
+                </div>
+            </div>
+
+            <div class="mock-steps-mobile" style="display: none;">
+                <div class="mock-step-row">
+                    <div class="mock-icon">📝</div>
+                    <div>
+                        <h4 data-i18n="mock_s1_title">Har shanba mock test bo'lib o'tadi</h4>
+                        <p data-i18n="mock_s1_desc">Haqiqiy imtihon sharoitida test topshirasiz</p>
+                    </div>
+                </div>
+                <div class="mock-step-row">
+                    <div class="mock-icon">🎯</div>
+                    <div>
+                        <h4 data-i18n="mock_s2_title">55+ ball olasiz</h4>
+                        <p data-i18n="mock_s2_desc">Maqsadli ball — B2 sertifikatiga yo'l</p>
+                    </div>
+                </div>
+                <div class="mock-step-row">
+                    <div class="mock-icon">🎁</div>
+                    <div>
+                        <h4 data-i18n="mock_s3_title">Imtihon puli ustozdan</h4>
+                        <p data-i18n="mock_s3_desc">Registratsiya to'lovini teacher arakulov o'z zimmasiga oladi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mock-rules text-brown-rules" data-aos="fade-up">
+                <h3 data-i18n="rules_title" class="font-times">Qoida va Shartlar</h3>
+                <ul>
+                    <li data-i18n="rule_1">Faqat CEFR guruh o'quvchilari uchun</li>
+                    <li data-i18n="rule_2">Har shanba soat 16:00 da</li>
+                    <li data-i18n="rule_3">Natija e'lon qilinadi va 55+ ball olganlar ro'yxatga olinadi</li>
+                    <li data-i18n="rule_4">Imtihon sanasi kelganda ustoz to'lov qiladi</li>
+                </ul>
+            </div>
+
+            <a href="#contact" class="btn btn-primary" style="font-size: 1.2rem; padding: 18px 40px;" data-i18n="btn_enroll_now">Hoziroq yoziling</a>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="py-20 bg-alt fade-transition" id="results">
+        <div class="container">
+            <h2 class="section-title font-times" data-aos="fade-up" data-i18n="results_title">O'quvchilarimiz Natijalari</h2>
+            
+            <div class="results-grid" id="resultsSection">
+                <!-- Card 1 -->
+                <div class="trophy-card trophy-orange" data-aos="fade-up">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-num counter" data-target="70">0</div>
+                    <div class="trophy-text" data-i18n="res_text1">B2 Sertifikat olgan o'quvchilar</div>
+                    <div class="prog-bar-container">
+                        <div class="prog-bar prog-orange" data-width="70%"></div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="trophy-card trophy-blue" data-aos="fade-up" data-aos-delay="150">
+                    <div class="trophy-icon">📜</div>
+                    <div class="trophy-num counter" data-target="25">0</div>
+                    <div class="trophy-text" data-i18n="res_text2">Bu yilda sertifikat olganlar</div>
+                    <div class="prog-bar-container">
+                        <div class="prog-bar prog-blue" data-width="80%"></div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="trophy-card trophy-green" data-aos="fade-up" data-aos-delay="300">
+                    <div class="trophy-icon">⭐</div>
+                    <div class="trophy-num counter" data-target="5">0</div>
+                    <div class="trophy-text" data-i18n="res_text3">DTM dan 189/189 maksimal ball</div>
+                    <div class="prog-bar-container">
+                        <div class="prog-bar prog-green" data-width="100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule & Map -->
+    <hr class="section-divider">
+    <section class="py-20 bg-alt fade-transition">
+        <div class="container schedule-grid">
+            <div data-aos="fade-right">
+                <div class="schedule-card">
+                    <h3 style="font-size: 2rem; margin-bottom: 2rem;" data-i18n="sched_title" class="font-times">Dars Jadvali</h3>
+                    
+                    <div class="schedule-item">
+                        <span><i class="far fa-clock"></i> <span data-i18n="course_grammar" class="font-times">Grammatika Guruhi</span></span>
+                        <span data-i18n="sched_time1">Juft kunlari 14:00—16:00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span><i class="far fa-clock"></i> <span data-i18n="course_cefr" class="font-times">CEFR Guruhi</span></span>
+                        <span data-i18n="sched_time2">Har kuni 16:00—18:00</span>
+                    </div>
+
+                    <div class="address-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p style="font-weight: 600;" data-i18n="addr_1" class="font-times">Jizzax viloyati, Forish tumani</p>
+                            <p class="desc text-brown" data-i18n="addr_2">Bog'don shaharchasi, "Barkamol avlod" majmuasi</p>
+                            <p class="desc text-brown" style="margin-top: 10px;" data-i18n="addr_3">Orientir: Forish tumani markazida joylashgan</p>
+                            <a href="https://maps.google.com/?q=40.414845,67.180910" target="_blank" class="btn btn-outline" style="margin-top: 1.5rem; padding: 10px 20px;" data-i18n="btn_map">Yo'l topish</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-wrapper" data-aos="fade-left">
+                <iframe 
+                  src="https://www.google.com/maps?q=40.414845,67.180910&z=16&output=embed"
+                  width="100%" 
+                  height="100%" 
+                  style="border:0; border-radius:16px;" 
+                  allowfullscreen="" 
+                  loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <hr class="section-divider">
+    <section class="py-20 fade-transition" id="contact">
+        <div class="container">
+            <h2 class="section-title font-times" data-aos="fade-up" data-i18n="contact_title">Bog'lanish</h2>
+            
+            <div class="contact-grid">
+                <a href="https://t.me/Multilevel_instructor1" target="_blank" class="contact-card telegram" data-aos="flip-up">
+                    <i class="fab fa-telegram-plane"></i>
+                    <h4 class="font-times">Telegram</h4>
+                    <p class="desc">@Multilevel_instructor1</p>
+                </a>
+                
+                <a href="https://instagram.com/teacher_arakulov" target="_blank" class="contact-card instagram" data-aos="flip-up" data-aos-delay="150">
+                    <i class="fab fa-instagram"></i>
+                    <h4 class="font-times">Instagram</h4>
+                    <p class="desc">teacher_arakulov</p>
+                </a>
+                
+                <a href="tel:+998995282728" class="contact-card phone" data-aos="flip-up" data-aos-delay="300">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4 class="font-times">Telefon</h4>
+                    <p class="desc">+998 99 528 27 28</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Modal -->
+    <div class="modal-overlay" id="enrollModal" style="display: none; opacity: 0; transition: opacity 0.3s; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 20px;">
+        <div class="modal-box" style="background: var(--card-bg); border: 2px solid var(--accent); border-radius: 20px; padding: 32px; width: 100%; max-width: 450px; position: relative; transform: translateY(20px); transition: transform 0.3s;">
+            <button id="closeEnrollModal" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: var(--text-muted); cursor: pointer;">&times;</button>
+            <h3 style="font-size: 1.5rem; margin-bottom: 8px; color: var(--accent);" class="font-times">Kursga yozilish</h3>
+            <p style="color: var(--text-desc); margin-bottom: 24px; font-size: 14px;">Ma'lumotlaringizni qoldiring, biz tez orada aloqaga chiqamiz.</p>
+            
+            <form id="enrollForm">
+                <input type="hidden" id="enrollSource" value="Landing Page">
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px;">F.I.SH</label>
+                    <input type="text" id="enrollName" required placeholder="Ali Valiyev" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-alt); color: var(--text-main); font-family: inherit; font-size: 15px;">
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px;">Telefon raqam</label>
+                    <input type="tel" id="enrollPhone" required placeholder="+998 90 123 45 67" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-alt); color: var(--text-main); font-family: inherit; font-size: 15px;">
+                </div>
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px;">Kursni tanlang</label>
+                    <select id="enrollCourse" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-alt); color: var(--text-main); font-family: inherit; font-size: 15px; cursor: pointer;">
+                        <option value="">Barchasi qiziq / Maslahat kerak</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 16px;" id="enrollSubmitBtn">Yuborish</button>
+            </form>
+            <div id="enrollSuccess" style="display: none; text-align: center; padding: 20px 0;">
+                <div style="font-size: 48px; color: #22C55E; margin-bottom: 16px;">✅</div>
+                <h4 style="font-size: 1.2rem; color: #22C55E; margin-bottom: 8px;">Arizangiz qabul qilindi!</h4>
+                <p style="color: var(--text-desc); font-size: 14px;">Tez orada administratorlarimiz siz bilan bog'lanishadi.</p>
+                <button class="btn btn-outline" style="margin-top: 20px;" onclick="closeModal()">Yopish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="fade-transition">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Asadbek Arakulov &copy; 2025</div>
+                
+                <div class="footer-links">
+                    <a href="#about" data-i18n="nav_about">Biz haqimizda</a>
+                    <a href="#courses" data-i18n="nav_courses">Kurslar</a>
+                    <a href="#results" data-i18n="nav_results">Natijalar</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://t.me/Multilevel_instructor1" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://instagram.com/teacher_arakulov" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="desc" style="font-style: italic;" data-i18n="footer_motto">Ingliz tilini o'rganish — bu eng yaxshi investitsiya</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Initialize GSAP Mobile Stacked Cards Animation
+        function initMobileStackedCards() {
+            if (window.innerWidth <= 768) {
+                let cards = gsap.utils.toArray('.mock-step');
+                cards.forEach((card, index) => {
+                    if (index !== cards.length - 1) {
+                        gsap.to(card, {
+                            scale: 0.9,
+                            filter: "blur(10px)",
+                            opacity: 0.5,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: cards[index + 1],
+                                start: "top 70%",
+                                end: "top 20%",
+                                scrub: true
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('load', () => {
+            initMobileStackedCards();
+        });
+
+        // AOS Init
+        AOS.init({ once: false, duration: 800, offset: 80, easing: 'ease-out-cubic' });
+
+        // AOS refresh on anchor click
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(() => { AOS.refresh(); }, 600);
+            });
+        });
+
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const mobileActions = document.getElementById('mobileActions');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if(navLinks.classList.contains('active')) {
+                hamburger.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Theme Toggle Logic
+        const setMode = (mode) => {
+            document.body.setAttribute('data-theme', mode);
+            localStorage.setItem('theme', mode);
+            
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                if(btn.dataset.mode === mode) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        };
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setMode(savedTheme);
+
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                setMode(e.target.dataset.mode);
+            });
+        });
+
+        // i18n Translations
+        let translations = {
+            uz: {
+                meta_title: "Asadbek Arakulov - Ingliz tili o'qituvchisi",
+                nav_about: "Biz haqimizda", nav_courses: "Kurslar", nav_mock: "Mock Test", nav_results: "Natijalar", nav_contact: "Aloqa",
+                hero_title: "Ingliz tilini professional darajada o'rganing",
+                hero_desc: "6 yillik tajriba, 70+ B2 sertifikatli o'quvchilar, amaliy va natijaga yo'naltirilgan ta'lim.",
+                btn_enroll: "Darsga yozilish", btn_more: "Batafsil ma'lumot", btn_enroll_now: "Hoziroq yoziling", btn_map: "Yo'l topish",
+                hero_stat1: "500+ O'quvchi", hero_stat2: "70+ B2", hero_stat3: "15K+ Instagram",
+                stats_exp: "Yil tajriba", stats_students: "O'quvchilar", stats_certs: "B2 Sertifikat", stats_insta: "Instagram obunachi",
+                about_title: "Asadbek Arakulov haqida",
+                about_full_desc: "6 yillik tajriba davomida 500+ o'quvchiga ingliz tilini o'rgatib kelmoqdaman. Darslarim faqat nazariy emas — har bir dars amaliyotga asoslangan. Har shanba CEFR mock test o'tkazaman. Mock testdan 55+ ball olgan o'quvchilarga imtihon registratsiya pulini o'zim to'layman. Instagramda 15K+ obunachi bilan faol muloqotda bo'laman.",
+                about_li1: "Tajriba: 6 yil+", about_li2: "Amaliy va natijaga yo'naltirilgan darslar", about_li3: "Har shanba bepul Mock Test", about_li4: "55+ ball → imtihon puli ustozdan", about_li5: "Instagram: 15K+ obunachi, pulli o'yinlar",
+                certs_title: "Ustoz Sertifikatlari va Yutuqlari", cert_c1: "Ingliz tilida yuqori malaka darajasi", cert_aptis: "British Council tomonidan berilgan xalqaro sertifikat",
+                courses_title: "Bizning Kurslar",
+                course_grammar: "Grammatika Guruhi", price_grammar: "250 000 so'm/oy", time_grammar: "Juft kunlari (Du, Chor, Ju) 14:00 — 16:00", students_grammar: "O'rtacha 80 kishi", type_all: "Online va Offline", desc_grammar1: "Ingliz tilining poydevori", desc_grammar2: "Kursni tugatganlar CEFR guruhiga o'tadi",
+                course_cefr: "CEFR Guruhi", badge_popular: "Eng mashhur", price_cefr: "300 000 so'm/oy", time_cefr: "Har kuni 16:00 — 18:00", students_cefr: "O'rtacha 45 kishi", desc_cefr1: "Grammatika kursini tugatganlar uchun", desc_cefr2: "Har shanba mock test", desc_cefr3: "55+ ball → imtihon puli ustozdan",
+                mock_title: "Noyob Mock Test Tizimi", mock_desc: "O'zbekistonda birinchi marta — mock testdan o'tgan o'quvchilarga imtihon registratsiya pulini ustoz to'laydi!",
+                mock_s1_title: "Har shanba CEFR mock test", mock_s1_desc: "Haqiqiy imtihon sharoitida test topshirasiz",
+                mock_s2_title: "55+ ball olasiz", mock_s2_desc: "Maqsadli ball — B2 sertifikatiga yo'l",
+                mock_s3_title: "Imtihon puli ustozdan", mock_s3_desc: "Registratsiya to'lovini ustoz Asadbek o'z zimmasiga oladi",
+                rules_title: "Qoida va Shartlar", rule_1: "Faqat CEFR guruh o'quvchilari uchun", rule_2: "Har shanba soat 16:00 da", rule_3: "Natija e'lon qilinadi va 55+ ball olganlar ro'yxatga olinadi", rule_4: "Imtihon sanasi kelganda ustoz to'lov qiladi",
+                results_title: "O'quvchilarimiz Natijalari", res_text1: "B2 Sertifikat olgan o'quvchilar", res_text2: "Bu yilda sertifikat olganlar", res_text3: "DTM dan 189/189 maksimal ball",
+                sched_title: "Dars Jadvali", sched_time1: "Juft kunlari 14:00—16:00", sched_time2: "Har kuni 16:00—18:00",
+                addr_1: "Jizzax viloyati, Forish tumani", addr_2: "Bog'don shaharchasi, \"Barkamol avlod\" majmuasi", addr_3: "Orientir: Forish tumani markazida joylashgan",
+                contact_title: "Bog'lanish", footer_motto: "Ingliz tilini o'rganish — bu eng yaxshi investitsiya"
+            },
+            ru: {
+                meta_title: "Асадбек Аракулов - Преподаватель английского",
+                nav_about: "О нас", nav_courses: "Курсы", nav_mock: "Mock Test", nav_results: "Результаты", nav_contact: "Контакты",
+                hero_title: "Изучайте английский язык профессионально",
+                hero_desc: "6 лет опыта, 70+ учеников с сертификатом B2, практическое обучение.",
+                btn_enroll: "Записаться на курс", btn_more: "Подробнее", btn_enroll_now: "Записаться сейчас", btn_map: "Маршрут",
+                hero_stat1: "500+ Учеников", hero_stat2: "70+ B2", hero_stat3: "15K+ Instagram",
+                stats_exp: "Лет опыта", stats_students: "Учеников", stats_certs: "Сертификатов B2", stats_insta: "Подписчиков",
+                about_title: "Об Асадбеке Аракулове",
+                about_full_desc: "За 6 лет опыта я обучил английскому более 500 студентов. Мои уроки не только теоретические — каждый урок основан на практике. Каждую субботу провожу CEFR mock test. Я лично оплачиваю регистрацию на экзамен студентам, набравшим 55+ баллов. Активно общаюсь в Instagram с 15K+ подписчиками.",
+                about_li1: "Опыт: 6 лет+", about_li2: "Практические и результативные уроки", about_li3: "Бесплатный Mock Test каждую субботу", about_li4: "55+ баллов → оплата экзамена учителем", about_li5: "Instagram: 15K+ подписчиков, платные игры",
+                certs_title: "Сертификаты и достижения", cert_c1: "Высокий уровень владения английским языком", cert_aptis: "Международный сертификат от British Council",
+                courses_title: "Наши Курсы",
+                course_grammar: "Группа Грамматики", price_grammar: "250 000 сум/мес", time_grammar: "Четные дни 14:00 — 16:00", students_grammar: "В среднем 80 человек", type_all: "Онлайн и Офлайн", desc_grammar1: "Фундамент английского языка", desc_grammar2: "Окончившие переходят в группу CEFR",
+                course_cefr: "Группа CEFR", badge_popular: "Популярный", price_cefr: "300 000 сум/мес", time_cefr: "Каждый день 16:00 — 18:00", students_cefr: "В среднем 45 человек", desc_cefr1: "Для окончивших курс грамматики", desc_cefr2: "Mock test каждую субботу", desc_cefr3: "55+ баллов → экзамен оплатит учитель",
+                mock_title: "Уникальная Система Mock Test", mock_desc: "Впервые в Узбекистане — учитель оплачивает регистрацию на экзамен ученикам, прошедшим mock test!",
+                mock_s1_title: "CEFR mock test каждую субботу", mock_s1_desc: "Тестирование в условиях реального экзамена",
+                mock_s2_title: "Наберите 55+ баллов", mock_s2_desc: "Целевой балл — путь к сертификату B2",
+                mock_s3_title: "Экзамен оплатит учитель", mock_s3_desc: "Регистрационный взнос берет на себя учитель",
+                rules_title: "Правила и условия", rule_1: "Только для учеников группы CEFR", rule_2: "Каждую субботу в 16:00", rule_3: "Объявляются результаты и регистрируются набравшие 55+ баллов", rule_4: "В день экзамена учитель производит оплату",
+                results_title: "Результаты Наших Учеников", res_text1: "Учеников, получивших сертификат B2", res_text2: "Получивших сертификат в этом году", res_text3: "Максимальный балл DTM 189/189",
+                sched_title: "Расписание Уроков", sched_time1: "Четные дни 14:00—16:00", sched_time2: "Каждый день 16:00—18:00",
+                addr_1: "Джизакская область, Форишский район", addr_2: "Поселок Богдан, комплекс \"Баркамол авлод\"", addr_3: "Ориентир: В центре Форишского района",
+                contact_title: "Связаться", footer_motto: "Изучение английского — лучшая инвестиция"
+            },
+            en: {
+                meta_title: "Asadbek Arakulov - English Teacher",
+                nav_about: "About Us", nav_courses: "Courses", nav_mock: "Mock Test", nav_results: "Results", nav_contact: "Contact",
+                hero_title: "Learn English at a Professional Level",
+                hero_desc: "6 years experience, 70+ B2 certified students, practical and result-oriented education.",
+                btn_enroll: "Enroll Now", btn_more: "Learn More", btn_enroll_now: "Enroll Now", btn_map: "Get Directions",
+                hero_stat1: "500+ Students", hero_stat2: "70+ B2", hero_stat3: "15K+ Instagram",
+                stats_exp: "Years Experience", stats_students: "Students", stats_certs: "B2 Certificates", stats_insta: "Followers",
+                about_title: "About Asadbek Arakulov",
+                about_full_desc: "Over 6 years of experience, I have taught English to 500+ students. My classes are not just theoretical — every lesson is practice-based. I conduct CEFR mock tests every Saturday. I personally pay the exam registration fee for students who score 55+. I actively interact with 15K+ followers on Instagram.",
+                about_li1: "Experience: 6+ years", about_li2: "Practical and result-oriented classes", about_li3: "Free Mock Test every Saturday", about_li4: "55+ score → exam paid by teacher", about_li5: "Instagram: 15K+ followers, paid games",
+                certs_title: "Teacher Certificates & Achievements", cert_c1: "High level of English proficiency", cert_aptis: "International certificate by British Council",
+                courses_title: "Our Courses",
+                course_grammar: "Grammar Group", price_grammar: "250,000 UZS/mo", time_grammar: "Even days 14:00 — 16:00", students_grammar: "Avg 80 people", type_all: "Online and Offline", desc_grammar1: "Foundation of English language", desc_grammar2: "Graduates move to CEFR group",
+                course_cefr: "CEFR Group", badge_popular: "Popular", price_cefr: "300,000 UZS/mo", time_cefr: "Every day 16:00 — 18:00", students_cefr: "Avg 45 people", desc_cefr1: "For grammar course graduates", desc_cefr2: "Mock test every Saturday", desc_cefr3: "55+ score → teacher pays exam",
+                mock_title: "Unique Mock Test System", mock_desc: "For the first time in Uzbekistan — the teacher pays the exam registration fee for students who pass the mock test!",
+                mock_s1_title: "CEFR mock test every Saturday", mock_s1_desc: "Take the test in real exam conditions",
+                mock_s2_title: "Score 55+ points", mock_s2_desc: "Target score — path to B2 certificate",
+                mock_s3_title: "Exam paid by teacher", mock_s3_desc: "Teacher Asadbek covers the registration fee",
+                rules_title: "Rules and Conditions", rule_1: "Only for CEFR group students", rule_2: "Every Saturday at 16:00", rule_3: "Results are announced and 55+ scorers are registered", rule_4: "Payment is made by teacher on exam date",
+                results_title: "Our Students' Results", res_text1: "Students obtained B2 certificate", res_text2: "Certified students this year", res_text3: "Max DTM score 189/189",
+                sched_title: "Class Schedule", sched_time1: "Even days 14:00—16:00", sched_time2: "Every day 16:00—18:00",
+                addr_1: "Jizzakh region, Forish district", addr_2: "Bogdon town, \"Barkamol avlod\" complex", addr_3: "Landmark: Center of Forish district",
+                contact_title: "Contact Us", footer_motto: "Learning English is the best investment"
+            }
+        };
+
+        const setLang = (lang) => {
+            localStorage.setItem('lang', lang);
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if(btn.dataset.lang === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            const elements = document.querySelectorAll('.fade-transition');
+            elements.forEach(el => el.classList.add('fade-out'));
+
+            setTimeout(() => {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if(translations[lang][key]) {
+                        if(el.tagName === 'TITLE') document.title = translations[lang][key];
+                        else el.innerHTML = translations[lang][key];
+                    }
+                });
+                elements.forEach(el => el.classList.remove('fade-out'));
+            }, 200);
+        };
+
+        const savedLang = localStorage.getItem('lang') || 'uz';
+        setLang(savedLang);
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => setLang(e.target.dataset.lang));
+        });
+
+        // Counters & Progress Bars Animation
+        const animateCounters = () => {
+            document.querySelectorAll('.counter').forEach(counter => {
+                if (counter.dataset.animated) return;
+                counter.dataset.animated = 'true';
+                const target = +counter.getAttribute('data-target');
+                const speed = 100;
+                let count = 0;
+                
+                const update = () => {
+                    const inc = target / speed;
+                    if(count < target) {
+                        count += inc;
+                        counter.innerText = target >= 1000 ? Math.ceil(count/1000) + 'K+' : Math.ceil(count) + (target>20?'+':'');
+                        setTimeout(update, 20);
+                    } else {
+                        counter.innerText = target >= 1000 ? (target/1000) + 'K+' : target + (target>20?'+':'');
+                    }
+                }
+                update();
+            });
+        };
+
+        const animateProgress = () => {
+            document.querySelectorAll('.prog-bar').forEach(bar => {
+                bar.style.width = bar.getAttribute('data-width');
+            });
+        };
+
+        // Scroll Triggers
+        let statsDone = false;
+        let resultsDone = false;
+
+        const checkVisibility = () => {
+            const stats = document.getElementById('statsSection');
+            const results = document.getElementById('resultsSection');
+            const screen = window.innerHeight;
+
+            if(stats && !statsDone && stats.getBoundingClientRect().top < screen) {
+                animateCounters();
+                statsDone = true;
+            }
+
+            if(results && !resultsDone && results.getBoundingClientRect().top < screen) {
+                animateProgress();
+                resultsDone = true;
+            }
+        };
+
+        window.addEventListener('scroll', checkVisibility);
+        setTimeout(checkVisibility, 500);
+
+        // Supabase Integration
+        // OGOHLANTIRISH: Quyidagi maxfiy API kalitlari va Bot Tokenlarni ochiq kodda 
+        // qoldirish xavfsizlikka ziddir! Ularni backend'ga yashirish tavsiya qilinadi.
+        const SUPABASE_URL = 'https://cxbtauopxdywwcxhpnds.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4YnRhdW9weGR5d3djeGhwbmRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjcwODMsImV4cCI6MjA5NDc0MzA4M30.ebj5JUVBb_XLru6t5mTjbNL2WT44AyWKr4PVbVa-sq8';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Fetch Courses
+        async function loadCourses() {
+            try {
+                const { data: dbCourses, error } = await supabaseClient.from('courses').select('*').eq('is_active', true).order('created_at');
+                if (error) throw error;
+                
+                let courses = dbCourses || [];
+                courses.push({
+                    id: 'kids_group',
+                    name: 'Bolalar uchun guruh',
+                    price: 250000,
+                    schedule: 'Juft kunlari 10:00-12:00',
+                    students_count: 26,
+                    type: 'Faqat offline',
+                    description: 'Yoshi: 6 yoshdan 12 yoshgacha',
+                    is_popular: false
+                });
+
+                const grid = document.getElementById('coursesGrid');
+                const courseSelect = document.getElementById('enrollCourse');
+                grid.innerHTML = '';
+                
+                if (courses.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center;width:100%;grid-column:1/-1;">Hozircha kurslar yo\'q.</p>';
+                    return;
+                }
+
+                courses.forEach((c, index) => {
+                    // Populate select dropdown
+                    const opt = document.createElement('option');
+                    opt.value = c.id;
+                    opt.textContent = c.name;
+                    courseSelect.appendChild(opt);
+
+                    const delay = index * 150;
+                    const aosDel = index * 150;
+                    const isCefr = c.name.toLowerCase().includes('cefr'); // specific styling if it's CEFR
+                    const isKids = c.name.toLowerCase().includes('bolalar');
+                    
+                    let cardClass = 'course-grammar';
+                    let btnClass = 'btn-blue';
+                    let icon = '📚';
+                    if (isCefr) { cardClass = 'course-cefr'; btnClass = 'btn-primary'; icon = '🏆'; }
+                    if (isKids) { cardClass = 'course-kids'; btnClass = 'btn-green'; icon = '🧸'; }
+                    
+                    const cardHTML = `
+                        <div class="course-card ${cardClass}" data-aos="zoom-in" data-aos-delay="${aosDel}">
+                            ${c.is_popular ? '<div class="popular-badge">Eng mashhur</div>' : ''}
+                            <div class="course-icon">${icon}</div>
+                            <h3 class="font-times">${c.name}</h3>
+                            <div class="course-price">${c.price.toLocaleString()} so'm/oy</div>
+                            
+                            <ul class="course-details">
+                                <li>⏰ <span>${c.schedule}</span></li>
+                                <li>👥 <span>O'rtacha ${c.students_count} kishi</span></li>
+                                <li>🏠 <span style="text-transform:capitalize">${c.type}</span></li>
+                                <li class="italic-desc">📝 <span>${c.description}</span></li>
+                            </ul>
+                            
+                            <button class="btn ${btnClass}" onclick="openModal('${c.id}', '${c.name}')" style="width:100%;margin-top:auto;">Darsga yozilish</button>
+                        </div>
+                    `;
+                    grid.insertAdjacentHTML('beforeend', cardHTML);
+                });
+
+                // Apply touch events to dynamically created course cards
+                grid.querySelectorAll('.course-card').forEach(card => {
+                    card.addEventListener('touchstart', () => {
+                        card.classList.add('touch-active');
+                    }, { passive: true });
+                    card.addEventListener('touchend', () => {
+                        setTimeout(() => card.classList.remove('touch-active'), 400);
+                    }, { passive: true });
+                    card.addEventListener('touchcancel', () => {
+                        setTimeout(() => card.classList.remove('touch-active'), 400);
+                    }, { passive: true });
+                });
+
+                // Refresh AOS for newly inserted cards
+                if (typeof AOS !== 'undefined') AOS.refresh();
+
+                // Initialize mobile carousel
+                if (window.innerWidth <= 768 && courses.length > 1) {
+                    const controlsHTML = `
+                        <div class="carousel-controls" style="grid-column: 1/-1; width: 100%;">
+                            <button class="carousel-btn" id="prevCourse"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn" id="nextCourse"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    `;
+                    grid.insertAdjacentHTML('afterend', controlsHTML);
+                    
+                    document.getElementById('prevCourse').addEventListener('click', () => {
+                        grid.scrollBy({ left: -grid.clientWidth, behavior: 'smooth' });
+                    });
+                    document.getElementById('nextCourse').addEventListener('click', () => {
+                        grid.scrollBy({ left: grid.clientWidth, behavior: 'smooth' });
+                    });
+                }
+            } catch (err) {
+                console.error("Kurslarni yuklashda xatolik:", err);
+            }
+        }
+        
+        loadCourses();
+
+        // Load Settings & Translations from Supabase
+        async function loadSettings() {
+            try {
+                const { data, error } = await supabaseClient.from('settings').select('*');
+                if (error) throw error;
+                
+                const settingsMap = {};
+                data.forEach(s => settingsMap[s.key] = s.value);
+
+                // Update basic settings
+                if (settingsMap.telegram) {
+                    const cleanUsername = settingsMap.telegram.replace('@', '');
+                    document.querySelectorAll('a[href*="t.me/"]').forEach(a => a.href = 'https://t.me/' + cleanUsername);
+                    document.querySelectorAll('.contact-card.telegram p').forEach(p => p.textContent = settingsMap.telegram);
+                }
+                if (settingsMap.instagram) {
+                    const cleanUsername = settingsMap.instagram.replace('@', '').replace('https://instagram.com/', '');
+                    document.querySelectorAll('a[href*="instagram.com/"]').forEach(a => a.href = 'https://instagram.com/' + cleanUsername);
+                    document.querySelectorAll('.contact-card.instagram p').forEach(p => p.textContent = cleanUsername);
+                }
+                if (settingsMap.phone) {
+                    const cleanPhone = settingsMap.phone.replace(/[^0-9+]/g, '');
+                    document.querySelectorAll('a[href^="tel:"]').forEach(a => a.href = 'tel:' + cleanPhone);
+                    document.querySelectorAll('.contact-card.phone p').forEach(p => p.textContent = settingsMap.phone);
+                }
+                if (settingsMap.site_name || settingsMap.teacher_name) {
+                    const name = settingsMap.site_name || settingsMap.teacher_name;
+                    document.querySelectorAll('.logo, .footer-logo').forEach(el => el.textContent = name);
+                }
+                if (settingsMap.years_experience) {
+                    const el = document.querySelector('.stat-card [data-i18n="stats_exp"]')?.previousElementSibling;
+                    if (el) el.setAttribute('data-target', settingsMap.years_experience);
+                }
+                if (settingsMap.students_count) {
+                    const el = document.querySelector('.stat-card [data-i18n="stats_students"]')?.previousElementSibling;
+                    if (el) el.setAttribute('data-target', settingsMap.students_count.replace(/[^0-9]/g, ''));
+                }
+
+                // Load Translations
+                if (settingsMap.site_translations) {
+                    try {
+                        const parsed = JSON.parse(settingsMap.site_translations);
+                        if (parsed.uz && parsed.ru && parsed.en) {
+                            translations = parsed;
+                        }
+                    } catch(e) { console.error("Tarjimalarni parslashda xato:", e); }
+                }
+
+                // Re-apply language
+                setLang(localStorage.getItem('lang') || 'uz');
+            } catch (err) {
+                console.error("Sozlamalarni yuklashda xatolik:", err);
+            }
+        }
+        
+        loadSettings();
+
+        // Modal Logic
+        const enrollModal = document.getElementById('enrollModal');
+        const enrollForm = document.getElementById('enrollForm');
+        const enrollSuccess = document.getElementById('enrollSuccess');
+        const enrollSource = document.getElementById('enrollSource');
+
+        function openModal(courseId = '', sourceText = 'Landing Page') {
+            enrollModal.style.display = 'flex';
+            enrollSource.value = sourceText;
+            if (courseId) {
+                document.getElementById('enrollCourse').value = courseId;
+            }
+            setTimeout(() => {
+                enrollModal.style.opacity = '1';
+                enrollModal.querySelector('.modal-box').style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        function closeModal() {
+            enrollModal.style.opacity = '0';
+            enrollModal.querySelector('.modal-box').style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                enrollModal.style.display = 'none';
+                enrollForm.style.display = 'block';
+                enrollSuccess.style.display = 'none';
+                enrollForm.reset();
+            }, 300);
+        }
+
+        document.getElementById('closeEnrollModal').addEventListener('click', closeModal);
+        enrollModal.addEventListener('click', (e) => {
+            if (e.target === enrollModal) closeModal();
+        });
+
+        // Update all "yozilish" links that were pointing to #contact
+        document.querySelectorAll('a[href="#contact"]').forEach(btn => {
+            if (btn.textContent.toLowerCase().includes('yozil') || btn.getAttribute('data-i18n')?.includes('enroll')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+        });
+
+        // Handle Form Submit
+        enrollForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('enrollSubmitBtn');
+            const ogText = btn.textContent;
+            btn.textContent = 'Yuborilmoqda...';
+            btn.disabled = true;
+
+            const payload = {
+                full_name: document.getElementById('enrollName').value,
+                phone: document.getElementById('enrollPhone').value,
+                course_id: document.getElementById('enrollCourse').value || null,
+                source_page: enrollSource.value,
+                status: 'pending'
+            };
+
+            try {
+                const { error } = await supabaseClient.from('enrollments').insert(payload);
+                if (error) throw error;
+                
+                // Telegramga jo'natish
+                const botToken = '8722528839:AAHF0GP0czrF9VoO8AMmiCylJALg9gEjJSI';
+                const chatId = '6765979309';
+                const courseNameElement = document.getElementById('enrollCourse');
+                const courseName = courseNameElement.options[courseNameElement.selectedIndex].text;
+                
+                const tgMessage = `
+🔔 <b>YANGI MIJOZ RO'YXATDAN O'TDI!</b> 🔔
+━━━━━━━━━━━━━━━━━━━━
+
+👤 <b>Ism-familiya:</b> ${payload.full_name}
+📞 <b>Telefon raqam:</b> ${payload.phone}
+📚 <b>Qiziqayotgan kursi:</b> ${courseName}
+
+📌 <i>Mijoz sayt orqali yozildi.
+Iltimos, tezroq aloqaga chiqing!</i> 🚀
+`.trim();
+
+                fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chatId, text: tgMessage, parse_mode: 'HTML' })
+                }).catch(err => console.error('Telegram xatosi:', err));
+                
+                enrollForm.style.display = 'none';
+                enrollSuccess.style.display = 'block';
+            } catch (err) {
+                console.error("Yozilishda xatolik:", err);
+                alert("Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring yoki telefon qiling.");
+            } finally {
+                btn.textContent = ogText;
+                btn.disabled = false;
+            }
+        });
+
+        // Mobile visibility check
+        function checkMobile() {
+            if (window.innerWidth <= 768) {
+                mobileActions.style.display = 'flex';
+            } else {
+                mobileActions.style.display = 'none';
+            }
+        }
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        // Touch Animations for mobile cards (JavaScript)
+        const touchCardSelectors = [
+            '.course-card', '.trophy-card', '.stat-card', '.mock-step',
+            '.cert-card', '.schedule-card', '.contact-card'
+        ];
+
+        touchCardSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(card => {
+                card.addEventListener('touchstart', () => {
+                    card.classList.add('touch-active');
+                }, { passive: true });
+
+                card.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        card.classList.remove('touch-active');
+                    }, 400);
+                }, { passive: true });
+
+                card.addEventListener('touchcancel', () => {
+                    setTimeout(() => {
+                        card.classList.remove('touch-active');
+                    }, 400);
+                }, { passive: true });
+            });
+        });
+
+        // Re-apply touch events for dynamically loaded course cards
+        const originalLoadCourses = loadCourses;
+        document.addEventListener('coursesLoaded', () => {
+            document.querySelectorAll('.course-card').forEach(card => {
+                card.addEventListener('touchstart', () => {
+                    card.classList.add('touch-active');
+                }, { passive: true });
+                card.addEventListener('touchend', () => {
+                    setTimeout(() => card.classList.remove('touch-active'), 400);
+                }, { passive: true });
+            });
+        });
+
+        // Touch animations handled by both JS class and CSS :active state in media queries
+
+        // Mobile Results Carousel Logic
+        const initResultsCarousel = () => {
+            if (window.innerWidth <= 768) {
+                const resultsGrid = document.querySelector('.results-grid');
+                if (resultsGrid && document.querySelectorAll('.trophy-card').length > 1) {
+                    const controlsHTML = `
+                        <div class="carousel-controls" style="width: 100%; margin-top: 15px;">
+                            <button class="carousel-btn" id="prevResult"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn" id="nextResult"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    `;
+                    resultsGrid.insertAdjacentHTML('afterend', controlsHTML);
+                    
+                    document.getElementById('prevResult').addEventListener('click', () => {
+                        resultsGrid.scrollBy({ left: -resultsGrid.clientWidth, behavior: 'smooth' });
+                    });
+                    document.getElementById('nextResult').addEventListener('click', () => {
+                        resultsGrid.scrollBy({ left: resultsGrid.clientWidth, behavior: 'smooth' });
+                    });
+                }
+            }
+        };
+        initResultsCarousel();
+    </script>
+</body>
+</html>
