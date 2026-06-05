@@ -18,8 +18,8 @@
     
     <style>
         :root {
-            --bg-main: #FFFAF5;
-            --bg-alt: #FFF3E8;
+            --bg-main: #FFF5EE;
+            --bg-alt: #FFEEDD;
             --card-bg: #FFFFFF;
             --card-border: rgba(255,107,0,0.1);
             --text-main: #5C4A3A;
@@ -45,14 +45,11 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* WebKit Border-Radius Bug Fix for hardware accelerated transforms */
+        /* WebKit Border-Radius Bug Fix — transform olib tashlandi (AOS bilan conflict qiladi) */
         .course-card, .trophy-card, .stat-card, .mock-step, .cert-card, .schedule-card, .contact-card {
-            -webkit-mask-image: -webkit-radial-gradient(white, black);
-            mask-image: radial-gradient(white, black);
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
+            will-change: transform;
         }
 
         html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
@@ -950,7 +947,6 @@
             }
             .stat-card {
                 padding: 1.5rem 1rem;
-                transform: none !important;
                 border-radius: 12px !important;
             }
             .stat-icon { font-size: 2rem; }
@@ -1141,8 +1137,6 @@
                 flex-shrink: 0;
                 scroll-snap-align: center;
                 padding: 1.5rem;
-                transform: none !important;
-                opacity: 1 !important;
                 z-index: 1 !important;
                 box-shadow: none !important;
                 border-radius: 20px !important;
@@ -1248,23 +1242,8 @@
                 width: 100% !important;
             }
 
-            /* --- TOUCH ACTIVE ANIMATIONS (Pure CSS) --- */
-            .stat-card:active,
-            .cert-card:active,
-            .schedule-card:active,
-            .mock-rules:active,
-            .contact-card:active,
-            .mock-step:active {
-                transform: scale(0.97) !important;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-            }
-            .course-grammar:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .course-cefr:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .course-kids:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .trophy-orange:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .trophy-blue:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
-            .trophy-green:active { transform: scale(0.97) !important; transition: transform 0.3s ease !important; }
+            /* --- TOUCH ANIMATSIYALAR CSS :active orqali emas, JS touch-active klass orqali ishlaydi --- */
+            /* touch-active klasslari yuqorida global CSS da aniqlangan */
         }
 
         .fade-transition {
@@ -1548,7 +1527,7 @@
     <!-- Hero Section -->
     <section class="hero fade-transition" id="home">
         <div class="container hero-content">
-            <div class="hero-text" data-aos="fade-up">
+            <div class="hero-text" data-aos="fade-right">
                 <h1 data-i18n="hero_title" class="font-times">Ingliz tilini professional darajada o'rganing</h1>
                 <p class="desc text-brown" data-i18n="hero_desc">6 yillik tajriba, 70+ B2 sertifikatli o'quvchilar, amaliy va natijaga yo'naltirilgan ta'lim.</p>
                 
@@ -1564,7 +1543,7 @@
                 </div>
             </div>
 
-            <div class="hero-img-wrapper" data-aos="fade-up">
+            <div class="hero-img-wrapper" data-aos="fade-left">
                 <div class="hero-circle"></div>
                 <img src="photo_2026-05-18_09-57-31.jpg" alt="Ustoz" class="hero-img">
                 <div class="floating-badge">
@@ -1575,7 +1554,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-20 bg-alt fade-transition" data-aos="fade-up">
+    <section class="py-20 bg-alt fade-transition">
         <div class="container stats-grid" id="statsSection">
             <div class="stat-card" data-aos="zoom-in" data-aos-delay="0">
                 <div class="stat-icon">⏳</div>
@@ -1799,19 +1778,19 @@
             <h2 class="section-title font-times" data-aos="fade-up" data-i18n="contact_title">Bog'lanish</h2>
             
             <div class="contact-grid">
-                <a href="https://t.me/Multilevel_instructor1" target="_blank" class="contact-card telegram" data-aos="flip-up">
+                <a href="https://t.me/Multilevel_instructor1" target="_blank" class="contact-card telegram" data-aos="fade-up" data-aos-delay="0">
                     <i class="fab fa-telegram-plane"></i>
                     <h4 class="font-times">Telegram</h4>
                     <p class="desc">@Multilevel_instructor1</p>
                 </a>
                 
-                <a href="https://instagram.com/teacher_arakulov" target="_blank" class="contact-card instagram" data-aos="flip-up" data-aos-delay="150">
+                <a href="https://instagram.com/teacher_arakulov" target="_blank" class="contact-card instagram" data-aos="fade-up" data-aos-delay="150">
                     <i class="fab fa-instagram"></i>
                     <h4 class="font-times">Instagram</h4>
                     <p class="desc">teacher_arakulov</p>
                 </a>
                 
-                <a href="tel:+998995282728" class="contact-card phone" data-aos="flip-up" data-aos-delay="300">
+                <a href="tel:+998995282728" class="contact-card phone" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-phone-alt"></i>
                     <h4 class="font-times">Telefon</h4>
                     <p class="desc">+998 99 528 27 28</p>
