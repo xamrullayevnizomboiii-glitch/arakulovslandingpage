@@ -1379,26 +1379,126 @@
         @keyframes dash { 0% { stroke-dashoffset: 1000; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1000; } }
 
         /* --- TOUCH ACTIVE CLASS (JavaScript controlled) --- */
+        /* Asosiy touch effekt */
         .touch-active {
             transform: scale(1.05) !important;
             box-shadow: 0 0 30px rgba(255, 107, 0, 0.2) !important;
             transition: all 0.3s ease !important;
         }
+        /* Stat kartalar */
+        .stat-card.touch-active {
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.2) !important;
+            background: rgba(255, 107, 0, 0.15) !important;
+        }
+        /* Mock rules */
+        .mock-rules.touch-active {
+            transform: scale(1.03) !important;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.3) !important;
+            background: rgba(255, 107, 0, 0.25) !important;
+        }
+        /* Trophy kartalar */
+        .trophy-card.touch-active {
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.3) !important;
+        }
+        .trophy-orange.touch-active {
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.4) !important;
+            background: #FF6B00 !important;
+        }
+        .trophy-orange.touch-active .trophy-icon,
+        .trophy-orange.touch-active .trophy-num,
+        .trophy-orange.touch-active .trophy-text { color: #FFFFFF !important; }
+        .trophy-blue.touch-active {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4) !important;
+            background: #3B82F6 !important;
+        }
+        .trophy-blue.touch-active .trophy-icon,
+        .trophy-blue.touch-active .trophy-num,
+        .trophy-blue.touch-active .trophy-text { color: #FFFFFF !important; }
+        .trophy-green.touch-active {
+            box-shadow: 0 0 30px rgba(37, 209, 102, 0.4) !important;
+            background: #22C55E !important;
+        }
+        .trophy-green.touch-active .trophy-icon,
+        .trophy-green.touch-active .trophy-num,
+        .trophy-green.touch-active .trophy-text { color: #FFFFFF !important; }
+        /* Contact kartalar */
         .contact-card.telegram.touch-active {
             transform: scale(1.05) !important;
-            box-shadow: 0 0 30px rgba(0, 136, 204, 0.3) !important;
+            background: #0088CC !important;
+            box-shadow: 0 0 30px rgba(0, 136, 204, 0.4) !important;
+            color: white !important;
         }
+        .contact-card.telegram.touch-active i,
+        .contact-card.telegram.touch-active h4,
+        .contact-card.telegram.touch-active p { color: #FFFFFF !important; }
         .contact-card.instagram.touch-active {
             transform: scale(1.05) !important;
-            box-shadow: 0 0 30px rgba(225, 48, 108, 0.3) !important;
+            background: linear-gradient(45deg, #E1306C, #833AB4) !important;
+            box-shadow: 0 0 30px rgba(225, 48, 108, 0.4) !important;
+            color: white !important;
         }
+        .contact-card.instagram.touch-active i { background: none !important; -webkit-text-fill-color: #FFFFFF !important; color: #FFFFFF !important; }
+        .contact-card.instagram.touch-active h4,
+        .contact-card.instagram.touch-active p { color: #FFFFFF !important; }
         .contact-card.phone.touch-active {
             transform: scale(1.05) !important;
-            box-shadow: 0 0 30px rgba(37, 209, 102, 0.3) !important;
+            background: #25D166 !important;
+            box-shadow: 0 0 30px rgba(37, 209, 102, 0.4) !important;
+            color: white !important;
         }
-        .trophy-orange.touch-active { box-shadow: 0 0 30px rgba(255, 107, 0, 0.3) !important; }
-        .trophy-blue.touch-active { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3) !important; }
-        .trophy-green.touch-active { box-shadow: 0 0 30px rgba(37, 209, 102, 0.3) !important; }
+        .contact-card.phone.touch-active i,
+        .contact-card.phone.touch-active h4,
+        .contact-card.phone.touch-active p { color: #FFFFFF !important; }
+        /* Kurs kartalar */
+        .course-grammar.touch-active {
+            background: #3B82F6 !important;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4) !important;
+            transform: scale(1.03) !important;
+        }
+        .course-grammar.touch-active h3,
+        .course-grammar.touch-active .course-icon,
+        .course-grammar.touch-active .course-price,
+        .course-grammar.touch-active .course-details li,
+        .course-grammar.touch-active .course-details span { color: #FFFFFF !important; }
+        .course-grammar.touch-active .btn-blue { background: #FFFFFF !important; color: #3B82F6 !important; }
+        .course-cefr.touch-active {
+            background: #FF6B00 !important;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.4) !important;
+            transform: scale(1.03) !important;
+        }
+        .course-cefr.touch-active h3,
+        .course-cefr.touch-active .course-icon,
+        .course-cefr.touch-active .course-price,
+        .course-cefr.touch-active .course-details li,
+        .course-cefr.touch-active .course-details span { color: #FFFFFF !important; }
+        .course-cefr.touch-active .btn-primary { background: #FFFFFF !important; color: #FF6B00 !important; }
+        .course-kids.touch-active {
+            background: #22C55E !important;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.4) !important;
+            transform: scale(1.03) !important;
+        }
+        .course-kids.touch-active h3,
+        .course-kids.touch-active .course-icon,
+        .course-kids.touch-active .course-price,
+        .course-kids.touch-active .course-details li,
+        .course-kids.touch-active .course-details span { color: #FFFFFF !important; }
+        .course-kids.touch-active .btn-green { background: #FFFFFF !important; color: #22C55E !important; }
+        /* Sertifikat kartalar */
+        .cert-card.touch-active {
+            background: #FF6B00 !important;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.4) !important;
+            transform: scale(1.05) !important;
+        }
+        .cert-card.touch-active h4,
+        .cert-card.touch-active p { color: #FFFFFF !important; }
+        /* Schedule kartasi */
+        .schedule-card.touch-active {
+            background: rgba(255, 107, 0, 0.15) !important;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.3) !important;
+            transform: scale(1.02) !important;
+        }
 </style>
 </head>
 <body data-theme="light">
@@ -1477,22 +1577,22 @@
     <!-- Stats Section -->
     <section class="py-20 bg-alt fade-transition" data-aos="fade-up">
         <div class="container stats-grid" id="statsSection">
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="0">
                 <div class="stat-icon">⏳</div>
                 <div class="stat-num counter" data-target="6">0</div>
                 <div class="stat-text" data-i18n="stats_exp">Yil tajriba</div>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="150">
                 <div class="stat-icon">👨‍🎓</div>
                 <div class="stat-num counter" data-target="500">0</div>
                 <div class="stat-text" data-i18n="stats_students">O'quvchilar</div>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
                 <div class="stat-icon">🏆</div>
                 <div class="stat-num counter" data-target="70">0</div>
                 <div class="stat-text" data-i18n="stats_certs">B2 Sertifikat</div>
             </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="450">
                 <div class="stat-icon">📱</div>
                 <div class="stat-num counter" data-target="15000">0</div>
                 <div class="stat-text" data-i18n="stats_insta">Instagram obunachi</div>
@@ -2303,46 +2403,43 @@ Iltimos, tezroq aloqaga chiqing!</i> 🚀
         checkMobile();
         window.addEventListener('resize', checkMobile);
 
-        // Touch Animations for mobile cards (JavaScript)
-        const touchCardSelectors = [
-            '.course-card', '.trophy-card', '.stat-card', '.mock-step',
-            '.cert-card', '.schedule-card', '.contact-card'
-        ];
-
-        touchCardSelectors.forEach(selector => {
+        // =============================================
+        // TOUCH ANIMATSIYALAR — mobil qurilmalar uchun
+        // =============================================
+        function applyTouchEvents(selector) {
             document.querySelectorAll(selector).forEach(card => {
+                // Bir marta qo'shilganini tekshirish
+                if (card.dataset.touchBound) return;
+                card.dataset.touchBound = 'true';
+
                 card.addEventListener('touchstart', () => {
                     card.classList.add('touch-active');
                 }, { passive: true });
 
-                card.addEventListener('touchend', () => {
-                    setTimeout(() => {
-                        card.classList.remove('touch-active');
-                    }, 400);
-                }, { passive: true });
-
-                card.addEventListener('touchcancel', () => {
-                    setTimeout(() => {
-                        card.classList.remove('touch-active');
-                    }, 400);
-                }, { passive: true });
-            });
-        });
-
-        // Re-apply touch events for dynamically loaded course cards
-        const originalLoadCourses = loadCourses;
-        document.addEventListener('coursesLoaded', () => {
-            document.querySelectorAll('.course-card').forEach(card => {
-                card.addEventListener('touchstart', () => {
-                    card.classList.add('touch-active');
-                }, { passive: true });
                 card.addEventListener('touchend', () => {
                     setTimeout(() => card.classList.remove('touch-active'), 400);
                 }, { passive: true });
-            });
-        });
 
-        // Touch animations handled by both JS class and CSS :active state in media queries
+                card.addEventListener('touchcancel', () => {
+                    card.classList.remove('touch-active');
+                }, { passive: true });
+            });
+        }
+
+        // Barcha statik kartalar uchun touch events
+        const touchTargets = [
+            '.stat-card', '.cert-card', '.mock-step', '.mock-rules',
+            '.trophy-card', '.schedule-card', '.contact-card'
+        ];
+        touchTargets.forEach(sel => applyTouchEvents(sel));
+
+        // Dinamik yuklanadigan kurs kartalar uchun — loadCourses tugagandan so'ng chaqiriladi
+        // (loadCourses ichida ham qo'shilgan, bu zaxira sifatida)
+        setInterval(() => {
+            if (document.querySelectorAll('.course-card').length > 0) {
+                applyTouchEvents('.course-card');
+            }
+        }, 1000);
 
         // Mobile Results Carousel Logic
         const initResultsCarousel = () => {
