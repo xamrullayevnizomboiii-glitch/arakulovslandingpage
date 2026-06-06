@@ -433,7 +433,7 @@
 
         .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
         }
 
@@ -445,11 +445,6 @@
             align-items: center;
             gap: 10px;
             text-align: center;
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .cert-card {
-            background: #162236;
         }
 
         .cert-cefr {
@@ -462,27 +457,25 @@
             border: 2px solid #185FA5;
         }
 
-        .cert-cefr .cert-icon-circle {
-            width: 56px; height: 56px;
-            border-radius: 50%;
-            background: #FF6B00;
-            display: flex; align-items: center; justify-content: center;
-        }
-
+        .cert-cefr .cert-icon-circle,
         .cert-aptis .cert-icon-circle {
             width: 56px; height: 56px;
             border-radius: 50%;
-            background: #185FA5;
             display: flex; align-items: center; justify-content: center;
         }
 
+        .cert-cefr .cert-icon-circle { background: #FF6B00; }
+        .cert-aptis .cert-icon-circle { background: #185FA5; }
+
         .cert-icon-circle i { font-size: 26px; color: #fff; }
 
-        .cert-cefr h4 { font-size: 15px; font-weight: 600; color: var(--text-main); }
-        .cert-aptis h4 { font-size: 15px; font-weight: 600; color: var(--text-main); }
+        .cert-cefr h4, .cert-aptis h4 {
+            font-size: 15px; font-weight: 600; color: var(--text-primary);
+        }
 
-        .cert-cefr p { font-size: 11px; color: var(--text-desc); margin: 0; }
-        .cert-aptis p { font-size: 11px; color: var(--text-desc); margin: 0; }
+        .cert-cefr p, .cert-aptis p {
+            font-size: 11px; color: var(--text-secondary); margin: 0;
+        }
 
         .cert-divider-cefr {
             width: 100%;
@@ -905,16 +898,17 @@
                 min-height: auto;
             }
             .hero-content {
-                grid-template-columns: 1fr 1fr;
+                display: flex;
+                flex-direction: column;
                 gap: 1rem;
                 align-items: flex-start;
             }
             .hero-img-wrapper {
-                order: 1;
+                order: 3;
+                width: 100%;
                 margin-top: 0;
             }
             .hero-img {
-                max-width: 100%;
                 width: 100%;
                 border-radius: 16px;
             }
@@ -927,17 +921,20 @@
                 padding: 6px 12px;
             }
             .hero-text {
-                text-align: left;
+                display: contents;
             }
             .hero-text h1 {
+                order: 1;
                 font-size: 1.3rem;
                 margin-bottom: 0.75rem;
             }
             .hero-text .desc {
+                order: 2;
                 font-size: 0.8rem;
                 margin-bottom: 1rem;
             }
             .hero-buttons {
+                order: 4;
                 justify-content: flex-start;
                 flex-wrap: wrap;
                 gap: 0.5rem;
@@ -952,6 +949,7 @@
                 font-size: 0.75rem;
             }
             .mini-stats {
+                order: 5;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
@@ -1010,6 +1008,17 @@
                 object-position: center top !important;
                 margin: 0 auto !important;
                 border: 3px solid var(--accent) !important;
+                transition: all 0.3s ease !important;
+            }
+            .about-grid h2,
+            .about-grid p,
+            .about-grid li,
+            .about-grid .about-desc,
+            .about-grid [data-aos] {
+                transition: all 0.3s ease !important;
+                animation-play-state: running !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             .about-grid h2 {
                 grid-area: title;
@@ -1069,8 +1078,9 @@
                 border-radius: 20px !important;
                 overflow: hidden !important;
             }
-            .course-card.touch-active, .course-card:active {
+            .course-card.touch-active, .course-card:active, .course-card:focus {
                 transform: none !important;
+                scale: none !important;
                 box-shadow: none !important;
             }
             .course-grammar { background: rgba(59, 130, 246, 0.08) !important; }
@@ -1236,47 +1246,46 @@
 
             /* --- BOG'LANISH BO'LIMI (Faqat mobil) --- */
             .contact-grid {
-                grid-template-columns: 1fr !important;
-                gap: 12px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px !important;
             }
             .contact-card {
-                flex-direction: row !important;
+                display: flex !important;
                 align-items: center !important;
-                justify-content: flex-start !important;
-                padding: 8px 9px !important;
+                gap: 12px !important;
                 border-radius: 10px !important;
+                padding: 12px 14px !important;
+                border-width: 1.5px !important;
+                border-style: solid !important;
                 text-align: left !important;
             }
-            .contact-card.telegram { border: 1.5px solid #0088cc !important; background: #dff0fa !important; }
-            .contact-card.instagram { border: 1.5px solid #c13584 !important; background: #fde8f4 !important; }
-            .contact-card.phone { border: 1.5px solid #25a84b !important; background: #dcf5e7 !important; }
+            .contact-card.telegram { background: #dff0fa !important; border-color: #0088cc !important; }
+            .contact-card.instagram { background: #fde8f4 !important; border-color: #c13584 !important; }
+            .contact-card.phone { background: #dcf5e7 !important; border-color: #25a84b !important; }
 
-            .contact-card .contact-left svg {
-                width: 28px !important;
-                height: 28px !important;
-                margin-bottom: 0 !important;
+            .contact-card .contact-left {
+                width: 28px !important; height: 28px !important; flex-shrink: 0 !important;
             }
-            .contact-card .contact-info {
-                flex: 1;
-                margin-left: 12px;
+            .contact-card .contact-left svg {
+                width: 100% !important; height: 100% !important; margin: 0 !important;
             }
             .contact-card .contact-info h4 {
-                font-size: 0.95rem !important;
-                margin-bottom: 0 !important;
-                color: #000 !important;
+                font-size: 13px !important; font-weight: 600 !important; flex: 1 !important; margin: 0 !important;
             }
-            .contact-card .contact-info p {
-                font-size: 0.75rem !important;
-                font-weight: 500 !important;
-                color: #555 !important;
-                margin-bottom: 0 !important;
-            }
-            .contact-card .contact-right {
-                display: block !important;
-                font-size: 1.5rem;
-                font-weight: 300;
-                padding-right: 5px;
-            }
+            .contact-card.telegram  .contact-info h4 { color: #005f8e !important; }
+            .contact-card.instagram .contact-info h4 { color: #8b1a5a !important; }
+            .contact-card.phone     .contact-info h4 { color: #1a7035 !important; }
+
+            .contact-card .contact-info p { font-size: 11px !important; margin: 0 !important; font-weight: normal !important; }
+            .contact-card.telegram  .contact-info p { color: #0088cc !important; }
+            .contact-card.instagram .contact-info p { color: #c13584 !important; }
+            .contact-card.phone     .contact-info p { color: #25a84b !important; }
+
+            .contact-card .contact-right { margin-left: auto !important; font-size: 16px !important; padding-right: 0 !important; display: block !important; }
+            .contact-card.telegram  .contact-right { color: #0088cc !important; }
+            .contact-card.instagram .contact-right { color: #c13584 !important; }
+            .contact-card.phone     .contact-right { color: #25a84b !important; }
             .footer-links {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -1363,12 +1372,12 @@
         .cert-card:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
         .cert-card:hover h4, .cert-card:hover p { color: #FFFFFF !important; }
 
-        .course-grammar { border: 2px solid #3B82F6 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-grammar { background: rgba(59, 130, 246, 0.08) !important; border: 2px solid #3B82F6 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .course-grammar:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4) !important; background: #3B82F6 !important; }
         .course-grammar:hover h3, .course-grammar:hover .course-icon, .course-grammar:hover .course-price, 
         .course-grammar:hover .course-details, .course-grammar:hover .course-details li, .course-grammar:hover .course-details span { color: #FFFFFF !important; }
         .course-grammar:hover .btn-blue { background: #FFFFFF !important; color: #3B82F6 !important; }
-        .course-kids { border: 2px solid #22C55E !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-kids { background: rgba(34, 197, 94, 0.08) !important; border: 2px solid #22C55E !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .course-kids:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4) !important; background: #22C55E !important; }
         .course-kids:hover h3, .course-kids:hover .course-icon, .course-kids:hover .course-price, 
         .course-kids:hover .course-details, .course-kids:hover .course-details li, .course-kids:hover .course-details span { color: #FFFFFF !important; }
@@ -1378,7 +1387,7 @@
         .btn-green { background: #22C55E; color: white; width: 100%; margin-top: auto; }
         .btn-green:hover { background: #16a34a; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(34,197,94,0.3); }
 
-        .course-cefr { border: 2px solid #FF6B00 !important; background: var(--card-bg) !important; animation: none !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-cefr { background: rgba(255, 107, 0, 0.08) !important; border: 2px solid #FF6B00 !important; animation: none !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .course-cefr:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
         .course-cefr:hover h3, .course-cefr:hover .course-icon, .course-cefr:hover .course-price, 
         .course-cefr:hover .course-details, .course-cefr:hover .course-details li, .course-cefr:hover .course-details span { color: #FFFFFF !important; }
@@ -1695,31 +1704,30 @@
 
                 <h3 class="certs-title" data-i18n="certs_title">Ustoz Sertifikatlari va Yutuqlari</h3>
                 <div class="certs-grid">
-                    <div class="cert-card cert-cefr">
-                        <div class="cert-icon-circle">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <div>
-                            <h4>CEFR C1</h4>
-                            <p>Ingliz tili · C1</p>
-                        </div>
-                        <div class="cert-divider-cefr">
-                            <span class="cert-status">Tasdiqlangan ✓</span>
-                        </div>
+                  <div class="cert-card cert-cefr">
+                    <div class="cert-icon-circle">
+                      <i class="ti ti-medal"></i>
                     </div>
-
-                    <div class="cert-card cert-aptis">
-                        <div class="cert-icon-circle">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <div>
-                            <h4>APTIS</h4>
-                            <p>British Council</p>
-                        </div>
-                        <div class="cert-divider-aptis">
-                            <span class="cert-status">Xalqaro ✓</span>
-                        </div>
+                    <div>
+                      <h4>CEFR C1</h4>
+                      <p>Ingliz tili · C1</p>
                     </div>
+                    <div class="cert-divider-cefr">
+                      <span class="cert-status">Tasdiqlangan ✓</span>
+                    </div>
+                  </div>
+                  <div class="cert-card cert-aptis">
+                    <div class="cert-icon-circle">
+                      <i class="ti ti-rosette"></i>
+                    </div>
+                    <div>
+                      <h4>APTIS</h4>
+                      <p>British Council</p>
+                    </div>
+                    <div class="cert-divider-aptis">
+                      <span class="cert-status">Xalqaro ✓</span>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -2571,6 +2579,15 @@ Iltimos, tezroq aloqaga chiqing!</i> 🚀
             }
         };
         initResultsCarousel();
+        // mobil uchun AOS qayta init
+        if (window.innerWidth <= 768) {
+            AOS.init({
+                once: true,
+                duration: 600,
+                easing: 'ease-out'
+            });
+            AOS.refresh();
+        }
     </script>
 </body>
 </html>
