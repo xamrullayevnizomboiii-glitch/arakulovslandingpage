@@ -433,36 +433,71 @@
 
         .certs-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
         }
 
         .cert-card {
-            background: var(--bg-alt);
-            border: 1px solid var(--accent);
-            padding: 1.5rem;
             border-radius: 12px;
+            padding: 1.25rem 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+            transition: var(--transition);
         }
 
         [data-theme="dark"] .cert-card {
             background: #162236;
         }
 
-        .cert-card h4 {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent);
-            font-size: 1.2rem;
+        .cert-cefr {
+            background: rgba(255, 107, 0, 0.08);
+            border: 2px solid #FF6B00;
         }
 
-        .cert-card p {
-            font-size: 0.9rem;
-            color: var(--text-desc);
+        .cert-aptis {
+            background: rgba(24, 95, 165, 0.08);
+            border: 2px solid #185FA5;
         }
+
+        .cert-cefr .cert-icon-circle {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: #FF6B00;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .cert-aptis .cert-icon-circle {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: #185FA5;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .cert-icon-circle i { font-size: 26px; color: #fff; }
+
+        .cert-cefr h4 { font-size: 15px; font-weight: 600; color: var(--text-main); }
+        .cert-aptis h4 { font-size: 15px; font-weight: 600; color: var(--text-main); }
+
+        .cert-cefr p { font-size: 11px; color: var(--text-desc); margin: 0; }
+        .cert-aptis p { font-size: 11px; color: var(--text-desc); margin: 0; }
+
+        .cert-divider-cefr {
+            width: 100%;
+            border-top: 1px solid rgba(255, 107, 0, 0.25);
+            padding-top: 8px;
+        }
+
+        .cert-divider-aptis {
+            width: 100%;
+            border-top: 1px solid rgba(24, 95, 165, 0.25);
+            padding-top: 8px;
+        }
+
+        .cert-cefr .cert-status { font-size: 11px; color: #FF6B00; font-weight: 600; }
+        .cert-aptis .cert-status { font-size: 11px; color: #185FA5; font-weight: 600; }
 
         /* Courses Section */
         .courses-grid {
@@ -746,23 +781,18 @@
 
         .contact-card.telegram { border-color: rgba(0,136,204,0.3); }
         .contact-card.telegram:hover { box-shadow: 0 0 25px rgba(0,136,204,0.2); transform: scale(1.03); }
-        .contact-card.telegram i { color: #0088CC; font-size: 3rem; }
 
         .contact-card.instagram { border-color: rgba(225,48,108,0.3); }
         .contact-card.instagram:hover { box-shadow: 0 0 25px rgba(225,48,108,0.2); transform: scale(1.03); }
-        .contact-card.instagram i { 
-            font-size: 3rem;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        }
 
         .contact-card.phone { border-color: rgba(37,211,102,0.3); }
         .contact-card.phone:hover { box-shadow: 0 0 25px rgba(37,211,102,0.2); transform: scale(1.03); }
-        .contact-card.phone i { color: #25D166; font-size: 3rem; }
 
-        .contact-card h4 { font-size: 1.5rem; }
+        .contact-card svg { width: 3rem; height: 3rem; margin-bottom: 0.5rem; }
+
+        .contact-card h4 { font-size: 1.5rem; margin-bottom: 0.5rem; }
         .contact-card p { font-weight: 600; font-size: 1.1rem; }
+        .contact-right { display: none; }
 
         /* Footer */
         footer {
@@ -956,13 +986,15 @@
             /* --- ABOUT SECTION --- */
             .about-grid {
                 display: grid;
-                grid-template-columns: 100px 1fr;
+                grid-template-columns: 1fr;
                 grid-template-areas:
-                    "image title"
-                    "desc desc"
-                    "list list"
-                    "cert-title cert-title"
-                    "certs certs";
+                    "image"
+                    "title"
+                    "desc"
+                    "list"
+                    "cert-title"
+                    "certs";
+                justify-items: center;
                 gap: 15px;
                 align-items: center;
             }
@@ -971,19 +1003,20 @@
             }
             .about-img {
                 grid-area: image;
-                width: 100px !important;
-                height: 100px !important;
+                width: 180px !important;
+                height: 180px !important;
                 border-radius: 50% !important;
                 object-fit: cover !important;
-                margin: 0 !important;
+                object-position: center top !important;
+                margin: 0 auto !important;
                 border: 3px solid var(--accent) !important;
             }
             .about-grid h2 {
                 grid-area: title;
-                font-size: 1.3rem !important;
+                text-align: center;
+                font-size: 1.5rem !important;
                 margin-bottom: 0 !important;
                 line-height: 1.3;
-                text-align: left;
             }
             .about-desc { 
                 grid-area: desc;
@@ -1036,6 +1069,13 @@
                 border-radius: 20px !important;
                 overflow: hidden !important;
             }
+            .course-card.touch-active, .course-card:active {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+            .course-grammar { background: rgba(59, 130, 246, 0.08) !important; }
+            .course-cefr { background: rgba(255, 107, 0, 0.08) !important; animation: none !important; }
+            .course-kids { background: rgba(34, 197, 94, 0.08) !important; }
             .carousel-controls {
                 display: flex;
                 justify-content: center;
@@ -1193,6 +1233,50 @@
                 gap: 1.5rem;
                 text-align: center;
             }
+
+            /* --- BOG'LANISH BO'LIMI (Faqat mobil) --- */
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            .contact-card {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                padding: 8px 9px !important;
+                border-radius: 10px !important;
+                text-align: left !important;
+            }
+            .contact-card.telegram { border: 1.5px solid #0088cc !important; background: #dff0fa !important; }
+            .contact-card.instagram { border: 1.5px solid #c13584 !important; background: #fde8f4 !important; }
+            .contact-card.phone { border: 1.5px solid #25a84b !important; background: #dcf5e7 !important; }
+
+            .contact-card .contact-left svg {
+                width: 28px !important;
+                height: 28px !important;
+                margin-bottom: 0 !important;
+            }
+            .contact-card .contact-info {
+                flex: 1;
+                margin-left: 12px;
+            }
+            .contact-card .contact-info h4 {
+                font-size: 0.95rem !important;
+                margin-bottom: 0 !important;
+                color: #000 !important;
+            }
+            .contact-card .contact-info p {
+                font-size: 0.75rem !important;
+                font-weight: 500 !important;
+                color: #555 !important;
+                margin-bottom: 0 !important;
+            }
+            .contact-card .contact-right {
+                display: block !important;
+                font-size: 1.5rem;
+                font-weight: 300;
+                padding-right: 5px;
+            }
             .footer-links {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -1260,8 +1344,20 @@
         [data-theme="dark"] .mock-rules.text-brown-rules ul li { color: #D4C3B3 !important; }
         .icon-plus { color: #FF6B00; font-weight: bold; }
 
-        .stat-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .stat-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .stat-card:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: rgba(255, 107, 0, 0.15) !important; }
+
+        .stat-exp { border: 1.5px solid #FF6B00 !important; background: #fff3e8 !important; }
+        .stat-exp .stat-num, .stat-exp .stat-text { color: #cc4400 !important; }
+        
+        .stat-students { border: 1.5px solid #378ADD !important; background: #e6f1fb !important; }
+        .stat-students .stat-num, .stat-students .stat-text { color: #185fa5 !important; }
+        
+        .stat-certs { border: 1.5px solid #1D9E75 !important; background: #e1f5ee !important; }
+        .stat-certs .stat-num, .stat-certs .stat-text { color: #0f6e56 !important; }
+        
+        .stat-insta { border: 1.5px solid #D4537E !important; background: #fbeaf0 !important; }
+        .stat-insta .stat-num, .stat-insta .stat-text { color: #993556 !important; }
 
         .cert-card { border: 2px solid #FF6B00 !important; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .cert-card:hover { transform: scale(1.08) translateY(-5px) !important; box-shadow: 0 15px 35px rgba(255, 107, 0, 0.4) !important; background: #FF6B00 !important; }
@@ -1556,22 +1652,22 @@
     <!-- Stats Section -->
     <section class="py-20 bg-alt fade-transition">
         <div class="container stats-grid" id="statsSection">
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="0">
+            <div class="stat-card stat-exp" data-aos="zoom-in" data-aos-delay="0">
                 <div class="stat-icon">⏳</div>
                 <div class="stat-num counter" data-target="6">0</div>
                 <div class="stat-text" data-i18n="stats_exp">Yil tajriba</div>
             </div>
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="150">
+            <div class="stat-card stat-students" data-aos="zoom-in" data-aos-delay="150">
                 <div class="stat-icon">👨‍🎓</div>
                 <div class="stat-num counter" data-target="500">0</div>
                 <div class="stat-text" data-i18n="stats_students">O'quvchilar</div>
             </div>
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stat-card stat-certs" data-aos="zoom-in" data-aos-delay="300">
                 <div class="stat-icon">🏆</div>
                 <div class="stat-num counter" data-target="70">0</div>
                 <div class="stat-text" data-i18n="stats_certs">B2 Sertifikat</div>
             </div>
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="450">
+            <div class="stat-card stat-insta" data-aos="zoom-in" data-aos-delay="450">
                 <div class="stat-icon">📱</div>
                 <div class="stat-num counter" data-target="15000">0</div>
                 <div class="stat-text" data-i18n="stats_insta">Instagram obunachi</div>
@@ -1599,13 +1695,30 @@
 
                 <h3 class="certs-title" data-i18n="certs_title">Ustoz Sertifikatlari va Yutuqlari</h3>
                 <div class="certs-grid">
-                    <div class="cert-card">
-                        <h4>🏅 CEFR C1</h4>
-                        <p data-i18n="cert_c1">Ingliz tilida yuqori malaka darajasi</p>
+                    <div class="cert-card cert-cefr">
+                        <div class="cert-icon-circle">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h4>CEFR C1</h4>
+                            <p>Ingliz tili · C1</p>
+                        </div>
+                        <div class="cert-divider-cefr">
+                            <span class="cert-status">Tasdiqlangan ✓</span>
+                        </div>
                     </div>
-                    <div class="cert-card">
-                        <h4>🏅 APTIS</h4>
-                        <p data-i18n="cert_aptis">British Council tomonidan berilgan xalqaro sertifikat</p>
+
+                    <div class="cert-card cert-aptis">
+                        <div class="cert-icon-circle">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h4>APTIS</h4>
+                            <p>British Council</p>
+                        </div>
+                        <div class="cert-divider-aptis">
+                            <span class="cert-status">Xalqaro ✓</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1779,21 +1892,36 @@
             
             <div class="contact-grid">
                 <a href="https://t.me/Multilevel_instructor1" target="_blank" class="contact-card telegram" data-aos="fade-up" data-aos-delay="0">
-                    <i class="fab fa-telegram-plane"></i>
-                    <h4 class="font-times">Telegram</h4>
-                    <p class="desc">@Multilevel_instructor1</p>
+                    <div class="contact-left">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="#0088cc"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </div>
+                    <div class="contact-info">
+                        <h4 class="font-times">Telegram</h4>
+                        <p class="desc">@Multilevel_instructor1</p>
+                    </div>
+                    <div class="contact-right" style="color: #0088cc;">›</div>
                 </a>
                 
                 <a href="https://instagram.com/teacher_arakulov" target="_blank" class="contact-card instagram" data-aos="fade-up" data-aos-delay="150">
-                    <i class="fab fa-instagram"></i>
-                    <h4 class="font-times">Instagram</h4>
-                    <p class="desc">teacher_arakulov</p>
+                    <div class="contact-left">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="url(#ig-grad)"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433" /><stop offset="25%" stop-color="#e6683c" /><stop offset="50%" stop-color="#dc2743" /><stop offset="75%" stop-color="#cc2366" /><stop offset="100%" stop-color="#bc1888" /></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.869a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+                    </div>
+                    <div class="contact-info">
+                        <h4 class="font-times">Instagram</h4>
+                        <p class="desc">teacher_arakulov</p>
+                    </div>
+                    <div class="contact-right" style="color: #c13584;">›</div>
                 </a>
                 
                 <a href="tel:+998995282728" class="contact-card phone" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-phone-alt"></i>
-                    <h4 class="font-times">Telefon</h4>
-                    <p class="desc">+998 99 528 27 28</p>
+                    <div class="contact-left">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="#25D166"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-info">
+                        <h4 class="font-times">Telefon</h4>
+                        <p class="desc">+998 99 528 27 28</p>
+                    </div>
+                    <div class="contact-right" style="color: #25D166;">›</div>
                 </a>
             </div>
         </div>
